@@ -15,7 +15,7 @@ class _OptionScreenState extends State<OptionScreen> {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: Color.fromRGBO(1, 1, 24, 10),
+      backgroundColor: const Color.fromRGBO(1, 1, 24, 10),
       body: Container(
         child: Stack(children: [
           Positioned(
@@ -26,21 +26,20 @@ class _OptionScreenState extends State<OptionScreen> {
                 height: screenHeight * 0.45,
                 width: screenWidth * 0.7,
                 decoration: BoxDecoration(
-                  color: Color.fromRGBO(221, 221, 254, 100),
+                  color: const Color.fromRGBO(221, 221, 254, 100),
                   borderRadius: BorderRadius.circular(25),
-                  border:
-                      Border.all(width: 1, color: Color.fromRGBO(1, 1, 24, 10)),
+                  border: Border.all(
+                      width: 1, color: const Color.fromRGBO(1, 1, 24, 10)),
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Container(
-                      child: Text(
-                        "Login as :",
-                        style: GoogleFonts.montserrat(
-                          fontSize: 30,
-                          color: Color.fromRGBO(1, 1, 24, 10),
-                        ),
+                    Text(
+                      "Login as :",
+                      style: GoogleFonts.montserrat(
+                        fontSize: 30,
+                        fontWeight: FontWeight.w700,
+                        color: const Color.fromRGBO(1, 1, 24, 10),
                       ),
                     ),
                     Mybutton(
@@ -71,16 +70,17 @@ class Mybutton extends StatefulWidget {
 }
 
 class _MybuttonState extends State<Mybutton> {
-  final screens = [HomeScreen(), HomeScreen()];
+  final screens = [const HomeScreen(), const HomeScreen()];
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
       style: ButtonStyle(
         backgroundColor:
-            MaterialStateProperty.all(Color.fromRGBO(1, 1, 24, 10)),
+            MaterialStateProperty.all(const Color.fromRGBO(1, 1, 24, 10)),
         elevation: MaterialStateProperty.all(10.0),
-        padding: MaterialStateProperty.all(EdgeInsets.fromLTRB(50, 20, 50, 20)),
+        padding: MaterialStateProperty.all(
+            const EdgeInsets.fromLTRB(50, 20, 50, 20)),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(
