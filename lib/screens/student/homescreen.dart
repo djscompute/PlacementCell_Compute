@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Column(
             children: [
               Container(
-                height: 300,
+                height: 350,
                 decoration: const BoxDecoration(
                   color: Color.fromRGBO(221, 221, 254, 1),
                   borderRadius: BorderRadius.only(
@@ -45,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             },
                             child: const Icon(
                               Icons.menu,
-                              color: Colors.black,
+                              color: const Color.fromRGBO(1, 1, 24, 1),
                               size: 40,
                             ),
                           ),
@@ -72,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               Text(
                                 "Hi, ",
                                 style: GoogleFonts.montserrat(
-                                  fontSize: 32,
+                                  fontSize: 35,
                                   fontWeight: FontWeight.bold,
                                   color: const Color.fromRGBO(1, 1, 24, 10),
                                 ),
@@ -80,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               Text(
                                 "Shivam",
                                 style: GoogleFonts.montserrat(
-                                  fontSize: 32,
+                                  fontSize: 35,
                                   fontWeight: FontWeight.bold,
                                   color: const Color.fromRGBO(1, 1, 24, 10),
                                 ),
@@ -98,36 +98,38 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                           const SizedBox(
-                            height: 15,
+                            height: 20,
                           ),
                           Text(
                             "What would you like to see?",
                             style: GoogleFonts.montserrat(
-                              fontSize: 15,
-                              color: Colors.white,
-                            ),
+                                fontSize: 18,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
                     ),
-                    Positioned(
-                      top: 220,
+                    const Positioned(
+                      top: 240,
                       left: 40,
                       child: Row(
                         children: [
                           SearchIcon(
-                              icon: const Icon(
+                              icon: Icon(
                                 Icons.timer_outlined,
-                                size: 30,
+                                size: 40,
+                                color: const Color.fromRGBO(1, 1, 24, 1),
                               ),
                               searchoption: "Status"),
-                          const SizedBox(
-                            width: 20,
+                          SizedBox(
+                            width: 30,
                           ),
                           SearchIcon(
-                              icon: const Icon(
+                              icon: Icon(
                                 Icons.design_services_outlined,
-                                size: 30,
+                                size: 40,
+                                color: const Color.fromRGBO(1, 1, 24, 1),
                               ),
                               searchoption: "My Companies"),
                         ],
@@ -136,64 +138,66 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(20, 30, 20, 0),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        // upload documents
-                        CardDescription(
-                          title: """Upload Docs""",
-                          icon: const Icon(
-                            Icons.document_scanner,
-                            size: 50,
-                            color: Color.fromRGBO(1, 1, 24, 10),
-                          ),
-                        ),
-                        // apply for companies
-                        CardDescription(
-                            title: "Search",
-                            icon: const Icon(
-                              Icons.search,
-                              size: 50,
-                              color: Color.fromRGBO(1, 1, 24, 10),
-                            )),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        // applied or not
-                        CardDescription(
-                            title: "Status",
-                            icon: const Icon(
-                              Icons.check,
-                              size: 50,
-                              color: Color.fromRGBO(1, 1, 24, 10),
-                            )),
-
-                        // profile
-                        CardDescription(
-                            title: "Profile",
-                            icon: const Icon(
-                              Icons.person,
-                              size: 50,
-                              color: Color.fromRGBO(1, 1, 24, 10),
-                            )),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
             ],
           ),
           Positioned(
-            bottom: 10,
+            top: 400,
+            left: 20,
+            right: 20,
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    // upload documents
+                    CardDescription(
+                      title: """Upload Docs""",
+                      icon: const Icon(
+                        Icons.document_scanner,
+                        size: 50,
+                        color: Color.fromRGBO(1, 1, 24, 10),
+                      ),
+                    ),
+                    // apply for companies
+                    CardDescription(
+                        title: "Search",
+                        icon: const Icon(
+                          Icons.search,
+                          size: 50,
+                          color: Color.fromRGBO(1, 1, 24, 10),
+                        )),
+                  ],
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    // applied or not
+                    CardDescription(
+                        title: "Status",
+                        icon: const Icon(
+                          Icons.check,
+                          size: 50,
+                          color: Color.fromRGBO(1, 1, 24, 10),
+                        )),
+
+                    // profile
+                    CardDescription(
+                        title: "Profile",
+                        icon: const Icon(
+                          Icons.person,
+                          size: 50,
+                          color: const Color.fromRGBO(1, 1, 24, 1),
+                        )),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Positioned(
+            bottom: 20,
             left: 0,
             right: 0,
             child: Center(
@@ -215,7 +219,7 @@ class _HomeScreenState extends State<HomeScreen> {
 class SearchIcon extends StatefulWidget {
   final Icon icon;
   final String searchoption;
-  SearchIcon({required this.icon, required this.searchoption});
+  const SearchIcon({super.key, required this.icon, required this.searchoption});
 
   @override
   State<SearchIcon> createState() => _SearchIconState();
@@ -227,12 +231,13 @@ class _SearchIconState extends State<SearchIcon> {
     return Column(
       children: [
         Container(child: widget.icon),
-        SizedBox(
+        const SizedBox(
           height: 5,
         ),
         Text(
           widget.searchoption,
-          style: GoogleFonts.montserrat(fontSize: 15),
+          style:
+              GoogleFonts.montserrat(fontSize: 18, fontWeight: FontWeight.w600),
         ),
       ],
     );
