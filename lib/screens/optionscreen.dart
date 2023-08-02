@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:placement_cell/screens/student/homescreen.dart';
 
 class OptionScreen extends StatefulWidget {
   const OptionScreen({super.key});
@@ -14,7 +15,6 @@ class _OptionScreenState extends State<OptionScreen> {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      // backgroundColor: const Color.fromRGBO(1, 1, 24, 10),
       backgroundColor: Color.fromRGBO(1, 1, 24, 10),
       body: Container(
         child: Stack(children: [
@@ -45,9 +45,11 @@ class _OptionScreenState extends State<OptionScreen> {
                     ),
                     Mybutton(
                       option: "Student",
+                      number: 1,
                     ),
                     Mybutton(
                       option: "Cordinator",
+                      number: 1,
                     ),
                   ],
                 ),
@@ -60,16 +62,17 @@ class _OptionScreenState extends State<OptionScreen> {
 
 class Mybutton extends StatefulWidget {
   String option;
+  int number;
 
-  Mybutton({
-    required this.option,
-  });
+  Mybutton({required this.option, required this.number});
 
   @override
   State<Mybutton> createState() => _MybuttonState();
 }
 
 class _MybuttonState extends State<Mybutton> {
+  final screens = [HomeScreen(), HomeScreen()];
+
   @override
   Widget build(BuildContext context) {
     return TextButton(
@@ -85,11 +88,14 @@ class _MybuttonState extends State<Mybutton> {
           ),
         ),
       ),
-      onPressed: () {},
+      onPressed: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => screens[widget.number]));
+      },
       child: Text(
         widget.option,
         style:
-            GoogleFonts.montserrat(fontSize: 20, fontWeight: FontWeight.w200),
+            GoogleFonts.montserrat(fontSize: 20, fontWeight: FontWeight.w500),
       ),
     );
   }

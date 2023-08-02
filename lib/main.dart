@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:placement_cell/screens/splashscreen.dart';
 
 void main() {
+
   runApp(const MyApp());
 }
 
