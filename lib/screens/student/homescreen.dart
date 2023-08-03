@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:placement_cell/utils/Buttons.dart';
 import 'package:placement_cell/utils/Cards.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -56,6 +58,14 @@ class _HomeScreenState extends State<HomeScreen> {
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(20),
                             ),
+                            child: Center(
+                                child: Text(
+                              "SN",
+                              style: GoogleFonts.montserrat(
+                                  color: Color.fromRGBO(1, 1, 24, 1),
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w400),
+                            )),
                           ),
                         ],
                       ),
@@ -70,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Row(
                             children: [
                               Text(
-                                "Hi, ",
+                                "Hello, ",
                                 style: GoogleFonts.montserrat(
                                   fontSize: 35,
                                   fontWeight: FontWeight.bold,
@@ -157,15 +167,18 @@ class _HomeScreenState extends State<HomeScreen> {
                         size: 50,
                         color: Color.fromRGBO(1, 1, 24, 10),
                       ),
+                      index: 0,
                     ),
                     // apply for companies
                     CardDescription(
-                        title: "Search",
-                        icon: const Icon(
-                          Icons.search,
-                          size: 50,
-                          color: Color.fromRGBO(1, 1, 24, 10),
-                        )),
+                      title: "Search",
+                      icon: const Icon(
+                        Icons.search,
+                        size: 50,
+                        color: Color.fromRGBO(1, 1, 24, 10),
+                      ),
+                      index: 1,
+                    ),
                   ],
                 ),
                 const SizedBox(
@@ -176,21 +189,25 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     // applied or not
                     CardDescription(
-                        title: "Status",
-                        icon: const Icon(
-                          Icons.check,
-                          size: 50,
-                          color: Color.fromRGBO(1, 1, 24, 10),
-                        )),
+                      title: "Status",
+                      icon: const Icon(
+                        Icons.check,
+                        size: 50,
+                        color: Color.fromRGBO(1, 1, 24, 10),
+                      ),
+                      index: 2,
+                    ),
 
                     // profile
                     CardDescription(
-                        title: "Profile",
-                        icon: const Icon(
-                          Icons.person,
-                          size: 50,
-                          color: const Color.fromRGBO(1, 1, 24, 1),
-                        )),
+                      title: "Profile",
+                      icon: const Icon(
+                        Icons.person,
+                        size: 50,
+                        color: const Color.fromRGBO(1, 1, 24, 1),
+                      ),
+                      index: 3,
+                    ),
                   ],
                 ),
               ],
@@ -211,6 +228,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       drawer: const Drawer(
         backgroundColor: Color.fromRGBO(221, 221, 254, 1),
+        child: HomeDrawer(),
       ),
     );
   }
@@ -239,6 +257,82 @@ class _SearchIconState extends State<SearchIcon> {
           style:
               GoogleFonts.montserrat(fontSize: 18, fontWeight: FontWeight.w600),
         ),
+      ],
+    );
+  }
+}
+
+class HomeDrawer extends StatefulWidget {
+  const HomeDrawer({super.key});
+
+  @override
+  State<HomeDrawer> createState() => _HomeDrawerState();
+}
+
+class _HomeDrawerState extends State<HomeDrawer> {
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Positioned(
+          top: 50,
+          left: 0,
+          right: 0,
+          child: Center(
+            child: Column(
+              children: [
+                Container(
+                  height: 100,
+                  width: 100,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  child: Center(
+                      child: Text(
+                    "SN",
+                    style: GoogleFonts.montserrat(
+                        color: Color.fromRGBO(1, 1, 24, 1),
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400),
+                  )),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                Text(
+                  "Shivam",
+                  style: GoogleFonts.montserrat(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: const Color.fromRGBO(1, 1, 24, 10),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        Positioned(
+            top: 220,
+            left: 20,
+            right: 20,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("Feedback",
+                    style: GoogleFonts.montserrat(
+                        fontSize: 18, fontWeight: FontWeight.w600)),
+                const Icon(
+                  Icons.feedback_outlined,
+                  size: 30,
+                ),
+              ],
+            )),
+        Positioned(
+            bottom: 20,
+            left: 0,
+            right: 0,
+            child: Center(child: Mybutton(option: "Logout", number: 1)))
       ],
     );
   }
