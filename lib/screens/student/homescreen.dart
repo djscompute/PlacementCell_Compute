@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:placement_cell/utils/Buttons.dart';
-import 'package:placement_cell/utils/Cards.dart';
+import 'package:placement_cell/utils/Cards_HomeScreen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
