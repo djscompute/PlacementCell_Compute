@@ -85,6 +85,7 @@ class UploadDocs extends StatelessWidget {
             right: 20,
             bottom: 0,
             child: ListView(
+              padding: EdgeInsets.all(0),
               children: [
                 Docs(
                   text: "Resume",

@@ -33,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 child: Stack(
-                  children: [ 
+                  children: [
                     Positioned(
                       top: 40,
                       right: 40,
@@ -55,16 +55,16 @@ class _HomeScreenState extends State<HomeScreen> {
                             height: 40,
                             width: 40,
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: Color.fromRGBO(1, 1, 24, 1),
                               borderRadius: BorderRadius.circular(20),
                             ),
                             child: Center(
                                 child: Text(
                               "SN",
                               style: GoogleFonts.montserrat(
-                                  color: Color.fromRGBO(1, 1, 24, 1),
+                                  color: Colors.lightBlueAccent,
                                   fontSize: 16,
-                                  fontWeight: FontWeight.w400),
+                                  fontWeight: FontWeight.w500),
                             )),
                           ),
                         ],

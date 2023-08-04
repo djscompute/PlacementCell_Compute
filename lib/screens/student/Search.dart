@@ -48,7 +48,7 @@ class _SearchCompaniesState extends State<SearchCompanies> {
                     top: 100,
                     left: 20,
                     child: Text(
-                      "Search",
+                      "Search Company",
                       style: GoogleFonts.montserrat(
                         fontSize: 35,
                         fontWeight: FontWeight.bold,
@@ -66,6 +66,7 @@ class _SearchCompaniesState extends State<SearchCompanies> {
             right: 20,
             bottom: 0,
             child: ListView(
+              padding: EdgeInsets.all(0),
               children: const [
                 CompanyCard(
                     title: "JP MORGAN",

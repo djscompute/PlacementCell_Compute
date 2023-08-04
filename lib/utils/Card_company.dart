@@ -4,7 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 class CompanyCard extends StatefulWidget {
   final String title;
   final String description;
-  const CompanyCard({required this.title, required this.description});
+  const CompanyCard(
+      {super.key, required this.title, required this.description});
 
   @override
   State<CompanyCard> createState() => _CompanyCardState();
@@ -29,10 +30,16 @@ class _CompanyCardState extends State<CompanyCard> {
             width: 90,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: Colors.white,
+              color: const Color.fromRGBO(1, 1, 24, 1),
             ),
             child: Center(
-                child: Text(widget.title[0] + widget.title[1].toUpperCase())),
+                child: Text(
+              widget.title[0] + widget.title[1].toUpperCase(),
+              style: GoogleFonts.montserrat(
+                  color: Colors.lightBlueAccent,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500),
+            )),
           ),
           const SizedBox(
             width: 10,

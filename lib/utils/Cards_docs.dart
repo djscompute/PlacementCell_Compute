@@ -22,7 +22,7 @@ class _DocsState extends State<Docs> {
 
     return Container(
       padding: const EdgeInsets.fromLTRB(20, 10, 10, 20),
-      margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
+      margin: const EdgeInsets.fromLTRB(0, 0, 0, 10),
       height: 175,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(25),
@@ -31,7 +31,7 @@ class _DocsState extends State<Docs> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Text(
