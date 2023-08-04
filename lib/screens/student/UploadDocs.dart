@@ -17,11 +17,11 @@ class UploadDocs extends StatelessWidget {
             right: 0,
             child: Container(
               height: 200,
-              decoration: BoxDecoration(
-                color: const Color.fromRGBO(221, 221, 254, 1),
+              decoration: const BoxDecoration(
+                color: Color.fromRGBO(221, 221, 254, 1),
                 borderRadius: BorderRadius.only(
-                  bottomLeft: const Radius.circular(50.0),
-                  bottomRight: const Radius.circular(50.0),
+                  bottomLeft: Radius.circular(50.0),
+                  bottomRight: Radius.circular(50.0),
                 ),
               ),
               child: Stack(
@@ -96,7 +96,7 @@ class UploadDocs extends StatelessWidget {
                 ),
                 Docs(
                   text: "Marksheet Sem 1",
-                  status: false,
+                  status: true,
                 ),
                 Docs(
                   text: "Marksheet Sem 2",
@@ -104,7 +104,7 @@ class UploadDocs extends StatelessWidget {
                 ),
                 Docs(
                   text: "Marksheet Sem 3",
-                  status: false,
+                  status: true,
                 ),
                 Docs(
                   text: "Marksheet Sem 4",
@@ -112,7 +112,7 @@ class UploadDocs extends StatelessWidget {
                 ),
                 Docs(
                   text: "Marksheet Sem 5",
-                  status: false,
+                  status: true,
                 ),
                 Docs(
                   text: "Marksheet Sem 6",

@@ -101,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             height: 10,
                           ),
                           Text(
-                            "Second year CSE(DS) student",
+                            "Third year CSE(DS) student",
                             style: GoogleFonts.montserrat(
                               fontSize: 18,
                               color: const Color.fromRGBO(1, 1, 24, 10),
