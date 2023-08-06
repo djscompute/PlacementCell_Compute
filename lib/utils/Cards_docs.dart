@@ -23,21 +23,21 @@ class _DocsState extends State<Docs> {
     return Container(
       padding: const EdgeInsets.fromLTRB(20, 10, 10, 20),
       margin: const EdgeInsets.fromLTRB(0, 0, 0, 10),
-      height: 175,
+      height: 130,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(25),
+        borderRadius: BorderRadius.circular(12),
         color: const Color.fromRGBO(221, 221, 254, 1),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(
-            height: 10,
+            height: 5,
           ),
           Text(
             widget.text,
             style: GoogleFonts.montserrat(
-                fontSize: 25, fontWeight: FontWeight.w600),
+                fontSize: 20, fontWeight: FontWeight.w600),
           ),
           const SizedBox(
             height: 10,
@@ -46,17 +46,17 @@ class _DocsState extends State<Docs> {
             dashPattern: dashpattern,
             strokeWidth: 2,
             borderType: BorderType.RRect,
-            radius: const Radius.circular(20),
+            radius: const Radius.circular(10),
             child: ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(20)),
+              borderRadius: BorderRadius.all(Radius.circular(10)),
               child: Container(
                 color: color,
-                height: 80,
+                height: 50,
                 width: 300,
                 child: Center(
                   child: Icon(
                     icon,
-                    size: 40,
+                    size: 30,
                   ),
                 ),
               ),

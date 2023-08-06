@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class CompanyCard extends StatefulWidget {
+class CardStatus extends StatefulWidget {
   final String title;
   final String description;
-  const CompanyCard(
-      {super.key, required this.title, required this.description});
+  bool status;
+
+  CardStatus(
+      {required this.title, required this.description, required this.status});
 
   @override
-  State<CompanyCard> createState() => _CompanyCardState();
+  State<CardStatus> createState() => _CardStatusState();
 }
 
-class _CompanyCardState extends State<CompanyCard> {
+class _CardStatusState extends State<CardStatus> {
   @override
   Widget build(BuildContext context) {
+    final color = widget.status == true ? Colors.green : Colors.red;
+    final icon = widget.status == true ? Icons.check : Icons.close;
     return Container(
       margin: const EdgeInsets.fromLTRB(0, 0, 0, 10),
       height: 100,
@@ -22,7 +26,7 @@ class _CompanyCardState extends State<CompanyCard> {
           color: const Color.fromRGBO(221, 221, 254, 1),
           borderRadius: BorderRadius.circular(12)),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
@@ -40,9 +44,6 @@ class _CompanyCardState extends State<CompanyCard> {
                   fontSize: 20,
                   fontWeight: FontWeight.w500),
             )),
-          ),
-          const SizedBox(
-            width: 10,
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -62,8 +63,16 @@ class _CompanyCardState extends State<CompanyCard> {
               ),
             ],
           ),
-          const SizedBox(
-            width: 10,
+          Container(
+            height: 50,
+            width: 50,
+            decoration: BoxDecoration(
+                color: color, borderRadius: BorderRadius.circular(12)),
+            child: Icon(
+              icon,
+              size: 40,
+              color: Colors.white,
+            ),
           ),
         ],
       ),

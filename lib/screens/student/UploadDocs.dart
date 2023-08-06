@@ -16,12 +16,12 @@ class UploadDocs extends StatelessWidget {
             left: 0,
             right: 0,
             child: Container(
-              height: 200,
+              height: 150,
               decoration: const BoxDecoration(
                 color: Color.fromRGBO(221, 221, 254, 1),
                 borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(50.0),
-                  bottomRight: Radius.circular(50.0),
+                  bottomLeft: Radius.circular(30.0),
+                  bottomRight: Radius.circular(30.0),
                 ),
               ),
               child: Stack(
@@ -46,30 +46,28 @@ class UploadDocs extends StatelessWidget {
                           height: 40,
                           width: 40,
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: Color.fromRGBO(1, 1, 24, 1),
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: Center(
-                            child: Text(
-                              "SN",
-                              style: GoogleFonts.montserrat(
-                                color: const Color.fromRGBO(1, 1, 24, 1),
+                              child: Text(
+                            "SN",
+                            style: GoogleFonts.montserrat(
+                                color: Colors.lightBlueAccent,
                                 fontSize: 16,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ),
+                                fontWeight: FontWeight.w500),
+                          )),
                         ),
                       ],
                     ),
                   ),
                   Positioned(
-                    top: 100,
-                    left: 20,
+                    top: 90,
+                    left: 40,
                     child: Text(
                       "Upload Docs",
                       style: GoogleFonts.montserrat(
-                        fontSize: 35,
+                        fontSize: 25,
                         fontWeight: FontWeight.bold,
                         color: const Color.fromRGBO(1, 1, 24, 10),
                       ),
@@ -80,7 +78,7 @@ class UploadDocs extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 210,
+            top: 170,
             left: 20,
             right: 20,
             bottom: 0,
