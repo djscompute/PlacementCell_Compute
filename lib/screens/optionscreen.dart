@@ -53,7 +53,7 @@ class _OptionScreenState extends State<OptionScreen> {
                 ),
                 Mybutton(
                   option: "Student",
-                  number: 1,
+                  number: 0,
                 ),
                 Mybutton(
                   option: "Cordinator",

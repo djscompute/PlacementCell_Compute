@@ -220,7 +220,8 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Center(
               child: Text(
                 "POWERED BY DJS COMPUTE",
-                style: GoogleFonts.montserrat(color: Colors.lightBlueAccent),
+                style: GoogleFonts.montserrat(
+                    color: Colors.lightBlueAccent, fontWeight: FontWeight.w500),
               ),
             ),
           )

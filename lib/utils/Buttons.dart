@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:placement_cell/screens/optionscreen.dart';
 import 'package:placement_cell/screens/student/HomeScreen.dart';
+
 class Mybutton extends StatefulWidget {
   String option;
   int number;
@@ -13,7 +15,7 @@ class Mybutton extends StatefulWidget {
 }
 
 class _MybuttonState extends State<Mybutton> {
-  final screens = [const HomeScreen(), const HomeScreen()];
+  final screens = [const HomeScreen(), const OptionScreen()];
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class _MybuttonState extends State<Mybutton> {
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(
-                20.0), // Add your desired border radius value
+                15.0), // Add your desired border radius value
           ),
         ),
       ),
