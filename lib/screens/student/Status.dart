@@ -96,12 +96,17 @@ class _StatusState extends State<Status> {
                   status: true,
                 ),
                 CardStatus(
-                  title: "Morgan Stanley",
+                  title: "JP",
                   description: "This is an example",
                   status: false,
                 ),
                 CardStatus(
-                  title: "JP",
+                  title: "Axxela",
+                  description: "This is an example",
+                  status: true,
+                ),
+                CardStatus(
+                  title: "Morgan Stanley",
                   description: "This is an example",
                   status: false,
                 ),

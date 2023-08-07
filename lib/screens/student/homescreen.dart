@@ -285,16 +285,16 @@ class _HomeDrawerState extends State<HomeDrawer> {
                   height: 100,
                   width: 100,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Color.fromRGBO(1, 1, 24, 1),
                     borderRadius: BorderRadius.circular(50),
                   ),
                   child: Center(
                       child: Text(
                     "SN",
                     style: GoogleFonts.montserrat(
-                        color: Color.fromRGBO(1, 1, 24, 1),
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400),
+                        color: Colors.lightBlueAccent,
+                        fontSize: 25,
+                        fontWeight: FontWeight.w500),
                   )),
                 ),
                 const SizedBox(
