@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:placement_cell/screens/student/homescreen.dart';
 import 'package:placement_cell/utils/Buttons.dart';
 
 class OptionScreen extends StatefulWidget {
