@@ -1,31 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:placement_cell/screens/optionscreen.dart';
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+
+
+class Splash extends StatefulWidget {
+  const Splash({super.key});
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  State<Splash> createState() => _SplashState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashState extends State<Splash> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    navigateToHome();
+    super.initState();
+  }
+  void navigateToHome() async{
+    await Future.delayed(const Duration(milliseconds: 2000));
+    Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+            builder: (context) => OptionScreen()));
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Center(
-        child: TextButton(
-            style: ButtonStyle(
-                backgroundColor:
-                    MaterialStatePropertyAll(Colors.lightBlue.shade200)),
-            onPressed: () {
-              setState(() {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => OptionScreen()));
-              });
-            },
-            child: Text("Go to option screen")),
+    return Scaffold(
+      backgroundColor: const Color.fromRGBO(1, 1, 24, 10),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(height: 200, width: 200, color: Colors.lightBlue,
+            child: Image.asset('images/logo.jpg'),),
+          ],
+        ),
       ),
     );
   }
 }
+
+//#010218
