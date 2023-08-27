@@ -18,7 +18,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'Placement',
-      home: SplashScreen(),
+      home: Splash(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
