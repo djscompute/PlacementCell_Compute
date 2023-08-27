@@ -22,7 +22,7 @@ class _OptionScreenState extends State<OptionScreen> {
           right: 0,
           left: 0,
           child: Image.asset(
-            "images/logo.png",
+            "images/logo.jpg",
             height: 250,
           ),
         ),
