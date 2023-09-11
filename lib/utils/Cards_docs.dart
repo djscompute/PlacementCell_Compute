@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 class Docs extends StatefulWidget {
   final String text;
   bool status;
-  Docs({required this.text, required this.status});
+  Docs({super.key, required this.text, required this.status});
 
   @override
   State<Docs> createState() => _DocsState();
@@ -48,7 +48,7 @@ class _DocsState extends State<Docs> {
             borderType: BorderType.RRect,
             radius: const Radius.circular(10),
             child: ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(10)),
+              borderRadius: const BorderRadius.all(Radius.circular(10)),
               child: Container(
                 color: color,
                 height: 50,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:placement_cell/screens/optionscreen.dart';
 
+
 class ProfileStudent extends StatefulWidget {
   const ProfileStudent({super.key});
 
@@ -122,7 +123,7 @@ class _ProfileStudentState extends State<ProfileStudent> {
             top: 250,
             child: ListView(
               padding: const EdgeInsets.all(0),
-              children: [
+              children: const [
                 ProfileBoxes(name: "Full Name", value: "Shivam Sanjay Nagori"),
                 ProfileBoxes(name: "SAP ID", value: "60009210083"),
                 ProfileBoxes(name: "Branch", value: "CSE (DS)"),
@@ -143,7 +144,7 @@ class ProfileBoxes extends StatefulWidget {
   final String name;
   final String value;
 
-  ProfileBoxes({required this.name, required this.value});
+  const ProfileBoxes({super.key, required this.name, required this.value});
 
   @override
   State<ProfileBoxes> createState() => _ProfileBoxesState();
@@ -167,7 +168,7 @@ class _ProfileBoxesState extends State<ProfileBoxes> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            widget.name.toUpperCase() + " :",
+            "${widget.name.toUpperCase()} :",
             style: GoogleFonts.montserrat(
               fontSize: 22,
               fontWeight: FontWeight.bold,
@@ -211,7 +212,7 @@ class LogoutButton extends StatelessWidget {
       ),
       onPressed: () {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => OptionScreen()));
+            context, MaterialPageRoute(builder: (context) => const OptionScreen()));
       },
       child: Text(
         "LOG OUT",

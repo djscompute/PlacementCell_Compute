@@ -7,7 +7,7 @@ class CardStatus extends StatefulWidget {
   bool status;
 
   CardStatus(
-      {required this.title, required this.description, required this.status});
+      {super.key, required this.title, required this.description, required this.status});
 
   @override
   State<CardStatus> createState() => _CardStatusState();

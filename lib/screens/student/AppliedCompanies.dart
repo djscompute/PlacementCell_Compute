@@ -10,7 +10,7 @@ class AppliedCompanies extends StatefulWidget {
 class _AppliedCompaniesState extends State<AppliedCompanies> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
         child: Text("Check your applied companies here"),
       ),

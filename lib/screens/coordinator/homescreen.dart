@@ -3,14 +3,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:placement_cell/utils/Buttons.dart';
 import 'package:placement_cell/utils/Cards_HomeScreen.dart';
 
-class StudentHomeScreen extends StatefulWidget {
-  const StudentHomeScreen({super.key});
+class CoordinatorHomeScreen extends StatefulWidget {
+  const CoordinatorHomeScreen({super.key});
 
   @override
-  State<StudentHomeScreen> createState() => _StudentHomeScreenState();
+  State<CoordinatorHomeScreen> createState() => _CoordinatorHomeScreenState();
 }
 
-class _StudentHomeScreenState extends State<StudentHomeScreen> {
+class _CoordinatorHomeScreenState extends State<CoordinatorHomeScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -59,12 +59,12 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                             ),
                             child: Center(
                                 child: Text(
-                              "SN",
-                              style: GoogleFonts.montserrat(
-                                  color: Colors.lightBlueAccent,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500),
-                            )),
+                                  "SN",
+                                  style: GoogleFonts.montserrat(
+                                      color: Colors.lightBlueAccent,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500),
+                                )),
                           ),
                         ],
                       ),
@@ -87,7 +87,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                                 ),
                               ),
                               Text(
-                                "Shivam",
+                                "Elon",
                                 style: GoogleFonts.montserrat(
                                   fontSize: 35,
                                   fontWeight: FontWeight.bold,
@@ -100,7 +100,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                             height: 10,
                           ),
                           Text(
-                            "Third year CSE(DS) student",
+                            "Placement coordinator of CSE(DS)",
                             style: GoogleFonts.montserrat(
                               fontSize: 18,
                               color: const Color.fromRGBO(1, 1, 24, 10),
@@ -160,22 +160,22 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                   children: [
                     // upload documents
                     CardDescription(
-                      title: """Upload Docs""",
                       icon: Icon(
-                        Icons.document_scanner,
+                        Icons.add,
                         size: 50,
                         color: Color.fromRGBO(1, 1, 24, 10),
                       ),
+                      title: '      Add \nCompanies',
                       index: 0,
                     ),
                     // apply for companies
                     CardDescription(
-                      title: "Search",
                       icon: Icon(
                         Icons.search,
                         size: 50,
                         color: Color.fromRGBO(1, 1, 24, 10),
                       ),
+                      title: "    Search\nCompanies",
                       index: 1,
                     ),
                   ],
@@ -188,9 +188,9 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                   children: [
                     // applied or not
                     CardDescription(
-                      title: "Status",
+                      title: "My Students",
                       icon: Icon(
-                        Icons.check,
+                        Icons.school,
                         size: 50,
                         color: Color.fromRGBO(1, 1, 24, 10),
                       ),
@@ -201,7 +201,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                     CardDescription(
                       title: "Profile",
                       icon: Icon(
-                        Icons.person,
+                        Icons.person_2_outlined,
                         size: 50,
                         color: Color.fromRGBO(1, 1, 24, 1),
                       ),
@@ -255,7 +255,7 @@ class _SearchIconState extends State<SearchIcon> {
         Text(
           widget.searchoption,
           style:
-              GoogleFonts.montserrat(fontSize: 18, fontWeight: FontWeight.w600),
+          GoogleFonts.montserrat(fontSize: 18, fontWeight: FontWeight.w600),
         ),
       ],
     );
@@ -290,18 +290,18 @@ class _HomeDrawerState extends State<HomeDrawer> {
                   ),
                   child: Center(
                       child: Text(
-                    "SN",
-                    style: GoogleFonts.montserrat(
-                        color: Colors.lightBlueAccent,
-                        fontSize: 25,
-                        fontWeight: FontWeight.w500),
-                  )),
+                        "EM",
+                        style: GoogleFonts.montserrat(
+                            color: Colors.lightBlueAccent,
+                            fontSize: 25,
+                            fontWeight: FontWeight.w500),
+                      )),
                 ),
                 const SizedBox(
                   height: 15,
                 ),
                 Text(
-                  "Shivam",
+                  "Elon",
                   style: GoogleFonts.montserrat(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,

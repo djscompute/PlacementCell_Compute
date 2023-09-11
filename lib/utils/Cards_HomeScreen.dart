@@ -9,15 +9,15 @@ class CardDescription extends StatefulWidget {
   final String title;
   final Icon icon;
   final int index;
-  CardDescription(
-      {required this.title, required this.icon, required this.index});
+  const CardDescription(
+      {super.key, required this.title, required this.icon, required this.index});
 
   @override
   State<CardDescription> createState() => _CardDescriptionState();
 }
 
 class _CardDescriptionState extends State<CardDescription> {
-  final screens = [UploadDocs(), SearchCompanies(), Status(), ProfileStudent()];
+  final screens = [const UploadDocs(), const SearchCompanies(), const Status(), const ProfileStudent()];
 
   @override
   Widget build(BuildContext context) {

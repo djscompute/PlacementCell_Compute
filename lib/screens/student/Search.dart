@@ -51,7 +51,7 @@ class _SearchCompaniesState extends State<SearchCompanies> {
                           height: 40,
                           width: 40,
                           decoration: BoxDecoration(
-                            color: Color.fromRGBO(1, 1, 24, 1),
+                            color: const Color.fromRGBO(1, 1, 24, 1),
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: Center(

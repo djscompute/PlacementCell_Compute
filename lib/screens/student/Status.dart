@@ -51,7 +51,7 @@ class _StatusState extends State<Status> {
                           height: 40,
                           width: 40,
                           decoration: BoxDecoration(
-                            color: Color.fromRGBO(1, 1, 24, 1),
+                            color: const Color.fromRGBO(1, 1, 24, 1),
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: Center(
@@ -88,7 +88,7 @@ class _StatusState extends State<Status> {
             right: 20,
             bottom: 0,
             child: ListView(
-              padding: EdgeInsets.all(0),
+              padding: const EdgeInsets.all(0),
               children: [
                 CardStatus(
                   title: "Adobe",
