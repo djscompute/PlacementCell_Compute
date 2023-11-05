@@ -15,11 +15,34 @@ const studentSchema = new Schema({
         type: Number, // Numeric field
         required: true,
         unique: true, // Ensures uniqueness
-    },    
+        validate: {
+            validator: function(v) {
+                // Check if the Sapid is exactly 10 digits
+                return /^\d{11}$/.test(v.toString());
+            },
+            message: 'Sapid should have exactly 10 digits.'
+        }
+    }, 
+    name:{
+        type:String,
+        required : true,
+    },   
+    middlename:{
+        type:String,
+        required : true,
+    },   
+    surname:{
+        type:String,
+        required : true,
+    },  
+    department:{
+        type:String,
+        required : true,
+    },  
     password:{
         type:String,
         required : true,
-    }
+    },
 });
 
 studentSchema.pre('save', async function(){
