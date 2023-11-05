@@ -1,7 +1,7 @@
 const app = require('./app');
 const db = require('./configuration/db');
 const port  = 3000;
-const UserModel = require('./models/user_model');
+const UserModel = require('./models/student_model');
 
 app.get('/', (req, res) =>{
     res.send("Hello world!");

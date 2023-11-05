@@ -1,4 +1,4 @@
-const studentService = require('../services/user_services');
+const studentService = require('../services/student_services');
 
 exports.register = async(req,res,next)=>{
     try {
