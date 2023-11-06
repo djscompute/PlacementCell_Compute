@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:placement_cell/screens/coordinator/homescreen.dart';
-import 'package:placement_cell/screens/student/homescreen.dart';
+import 'package:placement_cell/screens/student/login_screen_student.dart';
 
 class Mybutton extends StatefulWidget {
   String option;
@@ -14,7 +14,7 @@ class Mybutton extends StatefulWidget {
 }
 
 class _MybuttonState extends State<Mybutton> {
-  final screens = [const StudentHomeScreen(), const CoordinatorHomeScreen()];
+  final screens = [LoginPageStudent(), const CoordinatorHomeScreen()];
 
   @override
   Widget build(BuildContext context) {
