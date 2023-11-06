@@ -129,7 +129,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                                 Icons.timer_outlined,
                                 size: 40,
                                 color: Color.fromRGBO(1, 1, 24, 1),
-                              ),
+                              ),  
                               searchoption: "Status"),
                           SizedBox(
                             width: 30,
@@ -149,7 +149,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
               ),
             ],
           ),
-          const Positioned(
+          Positioned(
             top: 400,
             left: 20,
             right: 20,
