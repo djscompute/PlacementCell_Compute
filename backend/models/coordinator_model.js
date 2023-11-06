@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 
 const { Schema } = mongoose;
 
-const studentSchema = new Schema({
+const coordinatorSchema = new Schema({
     email:{
         type:String,
         lowercase:true,
@@ -23,10 +23,6 @@ const studentSchema = new Schema({
             message: 'Sapid should have exactly 10 digits.'
         }
     }, 
-    yearPassing:{
-        type:Number, // Numeric field
-        required:true,
-    },
     name:{
         type:String,
         required : true,
@@ -49,27 +45,27 @@ const studentSchema = new Schema({
     },
 });
 
-studentSchema.pre('save', async function(){
+coordinatorSchema.pre('save', async function(){
     try {
-        var student = this;
+        var coordinator = this;
         const salt = await(bcrypt.genSalt(10));
-        const hashpassword = await bcrypt.hash(student.password, salt);
+        const hashpassword = await bcrypt.hash(coordinator.password, salt);
 
-        student.password = hashpassword;
+        coordinator.password = hashpassword;
     } catch (error) {
         throw error;
     }
 })
 
-studentSchema.methods.comparePassword = async function(studentPassword){
+coordinatorSchema.methods.comparePassword = async function(coordinatorPassword){
     try{
-        const ismatch = await bcrypt.comparePassword(studentPassword, this.password);
+        const ismatch = await bcrypt.comparePassword(coordinatorPassword, this.password);
         return ismatch;
     }catch (error){
 
     }
 }
 
-const studentModel = db.model('student', studentSchema);
+const coordinatorModel = db.model('coordinator', coordinatorSchema);
 
-module.exports = studentModel;
+module.exports = coordinatorModel;

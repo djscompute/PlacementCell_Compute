@@ -2,9 +2,9 @@ const studentModel = require('../models/student_model');
 const jwt = require('jsonwebtoken');
 
 class studentService{
-    static async registerstudent(email,Sapid,name,middlename,surname,department,password){
+    static async registerstudent(email,Sapid,yearPassing,name,middlename,surname,department,password){
         try{
-            const createstudent = new studentModel({email,Sapid,name,middlename,surname,department,password});
+            const createstudent = new studentModel({email,Sapid,yearPassing,name,middlename,surname,department,password});
             return await createstudent.save();
         }catch(err){
             throw err;

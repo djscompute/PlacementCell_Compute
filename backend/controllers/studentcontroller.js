@@ -2,8 +2,8 @@ const studentService = require('../services/student_services');
 
 exports.register = async(req,res,next)=>{
     try {
-        const {email,Sapid,name,middlename,surname,department,password} = req.body;
-        const successRes =await studentService.registerstudent(email,Sapid,name,middlename,surname,department,password);
+        const {email,Sapid,yearPassing,name,middlename,surname,department,password} = req.body;
+        const successRes =await studentService.registerstudent(email,Sapid,yearPassing,name,middlename,surname,department,password);
 
         res.json({status:true,success:"student registered successfully"});
     } catch (error) {
