@@ -4,7 +4,9 @@ import 'package:placement_cell/utils/Buttons.dart';
 import 'package:placement_cell/utils/Cards_HomeScreen.dart';
 
 class StudentHomeScreen extends StatefulWidget {
-  const StudentHomeScreen({super.key});
+  final String name;
+  final String department;
+  const StudentHomeScreen({required this.name, required this.department});
 
   @override
   State<StudentHomeScreen> createState() => _StudentHomeScreenState();
@@ -87,7 +89,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                                 ),
                               ),
                               Text(
-                                "Shivam",
+                                widget.name,
                                 style: GoogleFonts.montserrat(
                                   fontSize: 35,
                                   fontWeight: FontWeight.bold,
@@ -100,7 +102,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                             height: 10,
                           ),
                           Text(
-                            "Third year CSE(DS) student",
+                            widget.department + " Student",
                             style: GoogleFonts.montserrat(
                               fontSize: 18,
                               color: const Color.fromRGBO(1, 1, 24, 10),
@@ -129,7 +131,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                                 Icons.timer_outlined,
                                 size: 40,
                                 color: Color.fromRGBO(1, 1, 24, 1),
-                              ),  
+                              ),
                               searchoption: "Status"),
                           SizedBox(
                             width: 30,

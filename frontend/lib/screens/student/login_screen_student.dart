@@ -1,5 +1,8 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:placement_cell/screens/optionscreen.dart';
 import 'package:placement_cell/screens/student/homescreen.dart';
 import 'package:placement_cell/utils/loginformfields.dart';
@@ -102,7 +105,10 @@ class _LoginPageStudentState extends State<LoginPageStudent> {
                 )),
           ),
 
-          const loginbtn(),
+          loginbtn(
+              email: _emailEditingController.text,
+              sapid: _sapidEditingController.text,
+              password: _passwordEditingController.text),
 
           //one line
           Positioned(
@@ -121,10 +127,10 @@ class _LoginPageStudentState extends State<LoginPageStudent> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => StudentHomeScreen()));
+                        // Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //         builder: (context) => StudentHomeScreen()));
                       },
                       child: Text(" Create one!",
                           style: GoogleFonts.montserrat(
@@ -142,7 +148,10 @@ class _LoginPageStudentState extends State<LoginPageStudent> {
 }
 
 class loginbtn extends StatelessWidget {
-  const loginbtn({super.key});
+  final String email;
+  final String sapid;
+  final String password;
+  loginbtn({required this.email, required this.sapid, required this.password});
 
   @override
   Widget build(BuildContext context) {
@@ -153,9 +162,47 @@ class loginbtn extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
         child: ElevatedButton(
-          onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => StudentHomeScreen()));
+          onPressed: () async {
+            print("button pressed");
+            if (this.email.isNotEmpty &&
+                this.sapid.isNotEmpty &&
+                this.password.isNotEmpty) {
+              print('button clicked');
+              var regBody = {
+                "email": this.email,
+                "Sapid": int.parse(this.sapid),
+                "password": this.password,
+              };
+
+              var response = await http.post(
+                  Uri.parse("http://192.168.2.65:3000/student/login"),
+                  headers: {"Content-Type": "application/json"},
+                  body: jsonEncode(regBody));
+
+              var jsonResponse = jsonDecode(response.body);
+
+              if (jsonResponse['status']) {
+                var myToken = jsonResponse['token'];
+                // prefs.setString('token', myToken);
+                print(myToken);
+                Map<String, dynamic> jwtdecodedToken =
+                    JwtDecoder.decode(myToken);
+                print(jwtdecodedToken);
+                String name = (jwtdecodedToken['name']);
+
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => StudentHomeScreen(
+                              name: name,
+                              department:jwtdecodedToken['department'], 
+                            )));
+              } else {
+                print("Something went wrong");
+              }
+            }
+            // Navigator.push(context,
+            //     MaterialPageRoute(builder: (context) => StudentHomeScreen()));
           },
           style: const ButtonStyle(
             backgroundColor:

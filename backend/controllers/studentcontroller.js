@@ -26,7 +26,7 @@ exports.login = async(req,res,next)=>{
             throw new Error("Password invalid");
         }
 
-        let tokenData = {_id:student._id, email:student.email};
+        let tokenData = {_id:student._id, email:student.email, name:student.name, department:student.department};
 
         const token = await studentService.generatetoken(tokenData, "secretKey",'1h');
         res.status(200).json({status:true, token:token})
