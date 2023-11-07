@@ -1,4 +1,5 @@
 const coordinatorModel = require('../models/coordinator_model');
+
 const jwt = require('jsonwebtoken');
 
 class coordinatorService{
@@ -22,6 +23,9 @@ class coordinatorService{
     static async generatetoken(tokenData, secretKey, jwt_expiry){
         return jwt.sign(tokenData, secretKey, {expiresIn: jwt_expiry});
     }
+
+    
+    
 }
 
 

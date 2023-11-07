@@ -22,7 +22,17 @@ class studentService{
     static async generatetoken(tokenData, secretKey, jwt_expiry){
         return jwt.sign(tokenData, secretKey, {expiresIn: jwt_expiry});
     }
+
+    static async getAllStudents() {
+        try {
+            return await studentModel.find({});
+        } catch (error) {
+            throw error;
+        }
+    }
+    
 }
+
 
 
 
