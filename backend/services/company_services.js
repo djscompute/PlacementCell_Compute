@@ -1,5 +1,5 @@
 const companyModel = require('../models/company_model');
-
+const studentModel = require('../models/student_model');    
 const jwt = require('jsonwebtoken');
 
 class companyService{
@@ -31,6 +31,39 @@ class companyService{
             throw error;
         }
     }
+
+    static async addStudentToCompany(companyEmail, studentSapid) {
+        try {
+            // Find the company by its email to get its unique 'id'
+            const company = await companyModel.findOne({ email: companyEmail });
+    
+            if (company) {
+                // Check if the student's 'Sapid' is already in the 'studentsApplied' array
+                if (company.studentsApplied.includes(studentSapid)) {
+                    return "Student already added to this company"; // Return a message if the student is already in the array
+                }
+    
+                // Verify if the student with the given 'Sapid' exists
+                const studentExists = await studentModel.findOne({ Sapid: studentSapid });
+    
+                if (studentExists) {
+                    // If the student exists, push their 'Sapid' into the 'studentsApplied' array of the company
+                    company.studentsApplied.push(studentSapid);
+    
+                    // Save the updated company
+                    const updatedCompany = await company.save();
+                    return updatedCompany;
+                } else {
+                    return "Student not found"; // Return a message if the student with the specified 'Sapid' was not found
+                }
+            } else {
+                return "Company not found"; // Return a message if the company with the specified email was not found
+            }
+        } catch (error) {
+            throw error;
+        }
+    }
+    
     
     
 }

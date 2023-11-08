@@ -18,7 +18,12 @@ const companySchema = new Schema({
     department:{
         type:String,
         required : true,
-    },  
+    },
+    studentsApplied:{
+        type:[Number],
+        required : false,
+    },
+
     
 });
 

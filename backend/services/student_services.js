@@ -1,4 +1,5 @@
 const studentModel = require('../models/student_model');
+const CompanyModel = require('../models/company_model');
 const jwt = require('jsonwebtoken');
 
 class studentService{
@@ -30,10 +31,8 @@ class studentService{
             throw error;
         }
     }
+
     
 }
-
-
-
 
 module.exports = studentService;

@@ -43,3 +43,4 @@ exports.getAllStudents = async (req, res, next) => {
         throw error;
     }
 }
+
