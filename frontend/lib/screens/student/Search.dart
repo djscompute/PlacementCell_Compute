@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart' as http;
 import 'package:placement_cell/utils/Card_company.dart';
 
 class SearchCompanies extends StatefulWidget {
@@ -10,6 +13,13 @@ class SearchCompanies extends StatefulWidget {
 }
 
 class _SearchCompaniesState extends State<SearchCompanies> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    fetchallCompanies();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -109,5 +119,16 @@ class _SearchCompaniesState extends State<SearchCompanies> {
         ],
       ),
     );
+  }
+
+  Future<void> fetchallCompanies() async {
+    var response = await http.get(
+      Uri.parse("http://192.168.146.65:3000/company/findallCompanies"),
+      headers: {"Content-Type": "application/json"},
+    );
+
+    var jsonResponse = jsonDecode(response.body);
+    print("The fetched companies are : ");
+    print(jsonResponse["companies"]);
   }
 }

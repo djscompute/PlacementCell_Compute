@@ -298,8 +298,6 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
   }
 }
 
-
-
 class SearchIcon extends StatefulWidget {
   final Icon icon;
   final String searchoption;
@@ -327,4 +325,3 @@ class _SearchIconState extends State<SearchIcon> {
     );
   }
 }
-
