@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
+import 'package:placement_cell/models/company_model.dart';
 import 'package:placement_cell/utils/Card_company.dart';
 
 class SearchCompanies extends StatefulWidget {
@@ -13,11 +14,13 @@ class SearchCompanies extends StatefulWidget {
 }
 
 class _SearchCompaniesState extends State<SearchCompanies> {
+  late Future<List<Company>> listofCompanies;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    fetchallCompanies();
+    listofCompanies = fetchAllCompanies();
   }
 
   @override
@@ -97,23 +100,34 @@ class _SearchCompaniesState extends State<SearchCompanies> {
             left: 20,
             right: 20,
             bottom: 0,
-            child: ListView(
-              padding: const EdgeInsets.all(0),
-              children: const [
-                CompanyCard(
-                    title: "JP MORGAN",
-                    description: "This is a test example 1"),
-                CompanyCard(
-                    title: "Dolat Capital",
-                    description: "This is a test example 2"),
-                CompanyCard(
-                    title: "Morgan Stanley",
-                    description: "This is a test example 3"),
-                CompanyCard(
-                    title: "Adobe", description: "This is a test example 4"),
-                CompanyCard(
-                    title: "Oracle", description: "This is a test example 5"),
-              ],
+            child: FutureBuilder<List<Company>>(
+              future: listofCompanies,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  // While data is loading
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else if (snapshot.hasError) {
+                  // If there is an error
+                  return Center(
+                    child: Text('Error: ${snapshot.error}'),
+                  );
+                } else {
+                  // If data is loaded successfully
+                  List<Company> companies = snapshot.data ?? [];
+                  return ListView.builder(
+                    padding: const EdgeInsets.all(0),
+                    itemCount: companies.length,
+                    itemBuilder: (context, index) {
+                      return CompanyCard(
+                        title: companies[index].nameCompany,
+                        description: companies[index].department,
+                      );
+                    },
+                  );
+                }
+              },
             ),
           ),
         ],
@@ -121,14 +135,23 @@ class _SearchCompaniesState extends State<SearchCompanies> {
     );
   }
 
-  Future<void> fetchallCompanies() async {
+  Future<List<Company>> fetchAllCompanies() async {
     var response = await http.get(
       Uri.parse("http://192.168.146.65:3000/company/findallCompanies"),
       headers: {"Content-Type": "application/json"},
     );
 
     var jsonResponse = jsonDecode(response.body);
-    print("The fetched companies are : ");
-    print(jsonResponse["companies"]);
+
+    if (jsonResponse['status'] == true) {
+      var companiesData = jsonResponse['companies'] as List<dynamic>;
+
+      List<Company> companiesList = companiesData
+          .map((companyJson) => Company.fromJson(companyJson))
+          .toList();
+      return companiesList;
+    } else {
+      throw Exception('Failed to load companies');
+    }
   }
 }
