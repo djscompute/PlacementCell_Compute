@@ -106,7 +106,9 @@ class _SearchCompaniesState extends State<SearchCompanies> {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   // While data is loading
                   return Center(
-                    child: CircularProgressIndicator(),
+                    child: CircularProgressIndicator(
+                      color: Colors.lightBlueAccent,
+                    ),
                   );
                 } else if (snapshot.hasError) {
                   // If there is an error
