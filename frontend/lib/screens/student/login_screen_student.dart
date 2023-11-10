@@ -164,45 +164,51 @@ class loginbtn extends StatelessWidget {
         child: ElevatedButton(
           onPressed: () async {
             print("button pressed");
-            if (this.email.isNotEmpty &&
-                this.sapid.isNotEmpty &&
-                this.password.isNotEmpty) {
-              print('button clicked');
-              var regBody = {
-                "email": this.email,
-                "Sapid": int.parse(this.sapid),
-                "password": this.password,
-              };
+            if (email.isNotEmpty && sapid.isNotEmpty && password.isNotEmpty) {
+              print('Button clicked');
+              try {
+                var regBody = {
+                  "email": email,
+                  "Sapid": int.parse(sapid),
+                  "password": password,
+                };
 
-              var response = await http.post(
-                  Uri.parse("http://192.168.2.65:3000/student/login"),
+                var response = await http.post(
+                  Uri.parse("http://192.168.146.65:3000/student/login"),
                   headers: {"Content-Type": "application/json"},
-                  body: jsonEncode(regBody));
+                  body: jsonEncode(regBody),
+                );
 
-              var jsonResponse = jsonDecode(response.body);
+                var jsonResponse = jsonDecode(response.body);
 
-              if (jsonResponse['status']) {
-                var myToken = jsonResponse['token'];
-                // prefs.setString('token', myToken);
-                print(myToken);
-                Map<String, dynamic> jwtdecodedToken =
-                    JwtDecoder.decode(myToken);
-                print(jwtdecodedToken);
-                String name = (jwtdecodedToken['name']);
+                if (jsonResponse['status'] == true) {
+                  var myToken = jsonResponse['token'];
+                  // prefs.setString('token', myToken);
+                  print(myToken);
 
-                Navigator.push(
+                  Map<String, dynamic> jwtdecodedToken =
+                      JwtDecoder.decode(myToken);
+                  print(jwtdecodedToken);
+
+                  String name = jwtdecodedToken['name'];
+                  String department = jwtdecodedToken['department'];
+
+                  Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => StudentHomeScreen(
-                              name: name,
-                              department:jwtdecodedToken['department'], 
-                            )));
-              } else {
-                print("Something went wrong");
+                      builder: (context) => StudentHomeScreen(
+                        name: name,
+                        department: department,
+                      ),
+                    ),
+                  );
+                } else {
+                  print("Something went wrong");
+                }
+              } catch (error) {
+                print("An error occurred: $error");
               }
             }
-            // Navigator.push(context,
-            //     MaterialPageRoute(builder: (context) => StudentHomeScreen()));
           },
           style: const ButtonStyle(
             backgroundColor:

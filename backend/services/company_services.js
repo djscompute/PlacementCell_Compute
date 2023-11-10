@@ -64,6 +64,29 @@ class companyService{
         }
     }
     
+    static async findCompaniesByStudentSapid(studentSapid) {
+        try {
+            // Use the student model to find the student by SAP ID
+            const student = await studentModel.findOne({ Sapid: studentSapid });
+    
+            if (!student) {
+                return "Student not found"; // Return a message if the student is not found
+            }
+    
+            // Use the company model to find companies where the student's SAP ID is in the 'studentsApplied' array
+            const companies = await companyModel.find({ studentsApplied: studentSapid });
+    
+            if (companies.length === 0) {
+                return "You haven't applied to any companies yet. Keep exploring opportunities!";
+            }
+    
+            // Return the list of companies where the student has applied
+            return companies.map((company) => company.name);
+        } catch (error) {
+            throw error;
+        }
+    }
+    
     
     
 }

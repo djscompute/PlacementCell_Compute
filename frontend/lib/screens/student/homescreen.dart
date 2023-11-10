@@ -228,13 +228,77 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
           )
         ],
       ),
-      drawer: const Drawer(
+      drawer: Drawer(
         backgroundColor: Color.fromRGBO(221, 221, 254, 1),
-        child: HomeDrawer(),
+        child: Stack(
+          children: [
+            Positioned(
+              top: 50,
+              left: 0,
+              right: 0,
+              child: Center(
+                child: Column(
+                  children: [
+                    Container(
+                      height: 100,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        color: const Color.fromRGBO(1, 1, 24, 1),
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                      child: Center(
+                          child: Text(
+                        "SN",
+                        style: GoogleFonts.montserrat(
+                            color: Colors.lightBlueAccent,
+                            fontSize: 25,
+                            fontWeight: FontWeight.w500),
+                      )),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    Text(
+                      widget.name,
+                      style: GoogleFonts.montserrat(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        color: const Color.fromRGBO(1, 1, 24, 10),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Positioned(
+                top: 220,
+                left: 20,
+                right: 20,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Feedback",
+                        style: GoogleFonts.montserrat(
+                            fontSize: 18, fontWeight: FontWeight.w600)),
+                    const Icon(
+                      Icons.feedback_outlined,
+                      size: 30,
+                    ),
+                  ],
+                )),
+            Positioned(
+                bottom: 20,
+                left: 0,
+                right: 0,
+                child: Center(child: Mybutton(option: "Logout", number: 1)))
+          ],
+        ),
       ),
     );
   }
 }
+
+
 
 class SearchIcon extends StatefulWidget {
   final Icon icon;
@@ -264,78 +328,3 @@ class _SearchIconState extends State<SearchIcon> {
   }
 }
 
-class HomeDrawer extends StatefulWidget {
-  const HomeDrawer({super.key});
-
-  @override
-  State<HomeDrawer> createState() => _HomeDrawerState();
-}
-
-class _HomeDrawerState extends State<HomeDrawer> {
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Positioned(
-          top: 50,
-          left: 0,
-          right: 0,
-          child: Center(
-            child: Column(
-              children: [
-                Container(
-                  height: 100,
-                  width: 100,
-                  decoration: BoxDecoration(
-                    color: const Color.fromRGBO(1, 1, 24, 1),
-                    borderRadius: BorderRadius.circular(50),
-                  ),
-                  child: Center(
-                      child: Text(
-                    "SN",
-                    style: GoogleFonts.montserrat(
-                        color: Colors.lightBlueAccent,
-                        fontSize: 25,
-                        fontWeight: FontWeight.w500),
-                  )),
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                Text(
-                  "Shivam",
-                  style: GoogleFonts.montserrat(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    color: const Color.fromRGBO(1, 1, 24, 10),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-        Positioned(
-            top: 220,
-            left: 20,
-            right: 20,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text("Feedback",
-                    style: GoogleFonts.montserrat(
-                        fontSize: 18, fontWeight: FontWeight.w600)),
-                const Icon(
-                  Icons.feedback_outlined,
-                  size: 30,
-                ),
-              ],
-            )),
-        Positioned(
-            bottom: 20,
-            left: 0,
-            right: 0,
-            child: Center(child: Mybutton(option: "Logout", number: 1)))
-      ],
-    );
-  }
-}
