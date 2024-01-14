@@ -6,7 +6,9 @@ import 'package:placement_cell/utils/Cards_HomeScreen.dart';
 class StudentHomeScreen extends StatefulWidget {
   final String name;
   final String department;
-  const StudentHomeScreen({required this.name, required this.department});
+  final int sapid;
+  const StudentHomeScreen(
+      {required this.name, required this.department, required this.sapid});
 
   @override
   State<StudentHomeScreen> createState() => _StudentHomeScreenState();
@@ -169,9 +171,11 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                         color: Color.fromRGBO(1, 1, 24, 10),
                       ),
                       index: 0,
+                      studentSapid: widget.sapid,
                     ),
                     // apply for companies
                     CardDescription(
+                      studentSapid: widget.sapid,
                       title: "Search",
                       icon: Icon(
                         Icons.search,
@@ -190,6 +194,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                   children: [
                     // applied or not
                     CardDescription(
+                      studentSapid: widget.sapid,
                       title: "Status",
                       icon: Icon(
                         Icons.check,
@@ -201,6 +206,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
 
                     // profile
                     CardDescription(
+                      studentSapid: widget.sapid,
                       title: "Profile",
                       icon: Icon(
                         Icons.person,

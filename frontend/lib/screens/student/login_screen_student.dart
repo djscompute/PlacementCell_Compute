@@ -196,6 +196,7 @@ class loginbtn extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) => StudentHomeScreen(
+                        sapid: int.parse(sapid),
                         name: name,
                         department: department,
                       ),

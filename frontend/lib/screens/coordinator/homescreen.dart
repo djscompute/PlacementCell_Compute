@@ -4,7 +4,8 @@ import 'package:placement_cell/utils/Buttons.dart';
 import 'package:placement_cell/utils/Cards_HomeScreen.dart';
 
 class CoordinatorHomeScreen extends StatefulWidget {
-  const CoordinatorHomeScreen({super.key});
+  final int sapid;
+  const CoordinatorHomeScreen({super.key, required this.sapid});
 
   @override
   State<CoordinatorHomeScreen> createState() => _CoordinatorHomeScreenState();
@@ -59,12 +60,12 @@ class _CoordinatorHomeScreenState extends State<CoordinatorHomeScreen> {
                             ),
                             child: Center(
                                 child: Text(
-                                  "SN",
-                                  style: GoogleFonts.montserrat(
-                                      color: Colors.lightBlueAccent,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500),
-                                )),
+                              "SN",
+                              style: GoogleFonts.montserrat(
+                                  color: Colors.lightBlueAccent,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500),
+                            )),
                           ),
                         ],
                       ),
@@ -149,7 +150,7 @@ class _CoordinatorHomeScreenState extends State<CoordinatorHomeScreen> {
               ),
             ],
           ),
-           Positioned(
+          Positioned(
             top: 400,
             left: 20,
             right: 20,
@@ -160,6 +161,7 @@ class _CoordinatorHomeScreenState extends State<CoordinatorHomeScreen> {
                   children: [
                     // upload documents
                     CardDescription(
+                      studentSapid: widget.sapid,
                       icon: Icon(
                         Icons.add,
                         size: 50,
@@ -170,6 +172,7 @@ class _CoordinatorHomeScreenState extends State<CoordinatorHomeScreen> {
                     ),
                     // apply for companies
                     CardDescription(
+                      studentSapid: widget.sapid,
                       icon: Icon(
                         Icons.search,
                         size: 50,
@@ -188,6 +191,7 @@ class _CoordinatorHomeScreenState extends State<CoordinatorHomeScreen> {
                   children: [
                     // applied or not
                     CardDescription(
+                      studentSapid: widget.sapid,
                       title: "My Students",
                       icon: Icon(
                         Icons.school,
@@ -199,6 +203,7 @@ class _CoordinatorHomeScreenState extends State<CoordinatorHomeScreen> {
 
                     // profile
                     CardDescription(
+                      studentSapid: widget.sapid,
                       title: "Profile",
                       icon: Icon(
                         Icons.person_2_outlined,
@@ -255,7 +260,7 @@ class _SearchIconState extends State<SearchIcon> {
         Text(
           widget.searchoption,
           style:
-          GoogleFonts.montserrat(fontSize: 18, fontWeight: FontWeight.w600),
+              GoogleFonts.montserrat(fontSize: 18, fontWeight: FontWeight.w600),
         ),
       ],
     );
@@ -290,12 +295,12 @@ class _HomeDrawerState extends State<HomeDrawer> {
                   ),
                   child: Center(
                       child: Text(
-                        "EM",
-                        style: GoogleFonts.montserrat(
-                            color: Colors.lightBlueAccent,
-                            fontSize: 25,
-                            fontWeight: FontWeight.w500),
-                      )),
+                    "EM",
+                    style: GoogleFonts.montserrat(
+                        color: Colors.lightBlueAccent,
+                        fontSize: 25,
+                        fontWeight: FontWeight.w500),
+                  )),
                 ),
                 const SizedBox(
                   height: 15,

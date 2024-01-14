@@ -8,7 +8,8 @@ import 'package:placement_cell/screens/student/apply_company.dart';
 import 'package:placement_cell/utils/Card_company.dart';
 
 class SearchCompanies extends StatefulWidget {
-  const SearchCompanies({super.key});
+  final int studentSapid;
+  const SearchCompanies({super.key, required this.studentSapid});
 
   @override
   State<SearchCompanies> createState() => _SearchCompaniesState();
@@ -133,6 +134,7 @@ class _SearchCompaniesState extends State<SearchCompanies> {
                                             companies[index].nameCompany,
                                         department: companies[index].department,
                                         companyEmail: companies[index].email,
+                                        studentSapid: widget.studentSapid,
                                       )));
                         },
                         child: CompanyCard(

@@ -9,12 +9,14 @@ class CardDescription extends StatefulWidget {
   final String title;
   final Icon icon;
   final int index;
+  final int studentSapid;
 
   CardDescription({
     super.key,
     required this.title,
     required this.icon,
     required this.index,
+    required this.studentSapid,
   });
 
   @override
@@ -22,15 +24,15 @@ class CardDescription extends StatefulWidget {
 }
 
 class _CardDescriptionState extends State<CardDescription> {
-  final screens = [
-    const UploadDocs(),
-    const SearchCompanies(),
-    const Status(),
-    const ProfileStudent()
-  ];
-
   @override
   Widget build(BuildContext context) {
+    final screens = [
+      const UploadDocs(),
+      SearchCompanies(studentSapid: widget.studentSapid),
+      const Status(),
+      const ProfileStudent()
+    ];
+
     return GestureDetector(
       onTap: () {
         Navigator.push(
