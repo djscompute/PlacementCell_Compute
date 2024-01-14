@@ -22,6 +22,7 @@ class ApplyCompany extends StatefulWidget {
 class _ApplyCompanyState extends State<ApplyCompany> {
   @override
   Widget build(BuildContext context) {
+    String branch = '';
     return Scaffold(
       backgroundColor: const Color.fromRGBO(1, 1, 24, 1),
       body: Stack(children: [
@@ -105,10 +106,9 @@ class _ApplyCompanyState extends State<ApplyCompany> {
     );
   }
 
-  // api function starts here 
+  // api function starts here
   Future<void> addStudentToCompany() async {
-    final url =
-        'http://192.168.193.65:3000/company/applyCompany';
+    final url = 'http://192.168.193.65:3000/company/applyCompany';
 
     final Map<String, dynamic> data = {
       "companyEmail": widget.companyEmail,

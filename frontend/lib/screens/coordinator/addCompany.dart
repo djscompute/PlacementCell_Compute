@@ -1,8 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:placement_cell/utils/CompanyTextFields.dart';
 import 'package:placement_cell/utils/branch.dart';
 import 'package:placement_cell/utils/loginformfields.dart';
+import 'package:http/http.dart' as http;
 
 class AddCompany extends StatefulWidget {
   const AddCompany({super.key});
@@ -12,11 +15,13 @@ class AddCompany extends StatefulWidget {
 }
 
 class _AddCompanyState extends State<AddCompany> {
+  TextEditingController _companyname = new TextEditingController();
+  TextEditingController _companyEmail = new TextEditingController();
+  TextEditingController _companyDescription = new TextEditingController();
+  String selectedBranch = '';
+
   @override
   Widget build(BuildContext context) {
-    TextEditingController _companyname = new TextEditingController();
-    TextEditingController _companyDescription = new TextEditingController();
-
     List<String> branches = [
       'CSE',
       'IT',
@@ -27,6 +32,7 @@ class _AddCompanyState extends State<AddCompany> {
       'EXTC',
       'MECH'
     ];
+    List<String> selectedBranches = [];
 
     return Scaffold(
       backgroundColor: const Color.fromRGBO(1, 1, 24, 1),
@@ -111,6 +117,10 @@ class _AddCompanyState extends State<AddCompany> {
                   controller: _companyname,
                 ),
                 CompanyTextFields(
+                  text: 'Company Email',
+                  controller: _companyEmail,
+                ),
+                CompanyTextFields(
                   text: 'Company Role',
                   controller: _companyDescription,
                 ),
@@ -121,7 +131,15 @@ class _AddCompanyState extends State<AddCompany> {
                   spacing: 5.0,
                   runSpacing: 8.0,
                   children: branches.map((branch) {
-                    return BranchCard(branch: branch);
+                    return GestureDetector(
+                      onTap: () {
+                        selectedBranches.add(branch);
+                        print(selectedBranches);
+                      },
+                      child: BranchCard(
+                        branch: branch,
+                      ),
+                    );
                   }).toList(),
                 ),
                 SizedBox(
@@ -149,7 +167,10 @@ class _AddCompanyState extends State<AddCompany> {
                     ),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  addCompany(_companyEmail.text, _companyname.text,
+                      selectedBranches[0]);
+                },
                 child: Text(
                   'Add Company',
                   style: GoogleFonts.montserrat(
@@ -163,5 +184,31 @@ class _AddCompanyState extends State<AddCompany> {
         ],
       ),
     );
+  }
+
+  void addCompany(email, name, department) async {
+    const url = 'http://192.168.193.65:3000/company/registration';
+
+    Map<String, dynamic> data = {
+      "email": email,
+      "name": name,
+      "department": department,
+    };
+
+    final http.Response response = await http.post(
+      Uri.parse(url),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(data),
+    );
+
+    if (response.statusCode == 201) {
+      print("Company added");
+      print(jsonDecode(response.body));
+    } else {
+      print("Failed to create company");
+      print(response.body);
+    }
   }
 }
