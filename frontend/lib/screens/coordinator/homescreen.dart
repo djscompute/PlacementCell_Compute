@@ -4,8 +4,9 @@ import 'package:placement_cell/utils/Buttons.dart';
 import 'package:placement_cell/utils/Cards_HomeScreen.dart';
 
 class CoordinatorHomeScreen extends StatefulWidget {
-  final int sapid;
-  const CoordinatorHomeScreen({super.key, required this.sapid});
+  const CoordinatorHomeScreen({
+    super.key,
+  });
 
   @override
   State<CoordinatorHomeScreen> createState() => _CoordinatorHomeScreenState();
@@ -161,7 +162,7 @@ class _CoordinatorHomeScreenState extends State<CoordinatorHomeScreen> {
                   children: [
                     // upload documents
                     CardDescription(
-                      studentSapid: widget.sapid,
+                      studentSapid: 0,
                       icon: Icon(
                         Icons.add,
                         size: 50,
@@ -172,7 +173,7 @@ class _CoordinatorHomeScreenState extends State<CoordinatorHomeScreen> {
                     ),
                     // apply for companies
                     CardDescription(
-                      studentSapid: widget.sapid,
+                      studentSapid: 0,
                       icon: Icon(
                         Icons.search,
                         size: 50,
@@ -191,7 +192,7 @@ class _CoordinatorHomeScreenState extends State<CoordinatorHomeScreen> {
                   children: [
                     // applied or not
                     CardDescription(
-                      studentSapid: widget.sapid,
+                      studentSapid: 0,
                       title: "My Students",
                       icon: Icon(
                         Icons.school,
@@ -203,7 +204,7 @@ class _CoordinatorHomeScreenState extends State<CoordinatorHomeScreen> {
 
                     // profile
                     CardDescription(
-                      studentSapid: widget.sapid,
+                      studentSapid: 0,
                       title: "Profile",
                       icon: Icon(
                         Icons.person_2_outlined,

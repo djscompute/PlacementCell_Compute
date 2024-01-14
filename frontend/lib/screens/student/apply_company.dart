@@ -105,9 +105,10 @@ class _ApplyCompanyState extends State<ApplyCompany> {
     );
   }
 
+  // api function starts here 
   Future<void> addStudentToCompany() async {
     final url =
-        'http://192.168.193.65:3000/company/applyCompany'; // Replace with your actual API endpoint
+        'http://192.168.193.65:3000/company/applyCompany';
 
     final Map<String, dynamic> data = {
       "companyEmail": widget.companyEmail,
@@ -124,7 +125,6 @@ class _ApplyCompanyState extends State<ApplyCompany> {
       final Map<String, dynamic> responseBody = jsonDecode(response.body);
       print(responseBody);
     } else {
-      // Error handling
       print('Error: ${response.statusCode}');
       print('Body: ${response.body}');
     }

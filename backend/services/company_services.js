@@ -63,6 +63,33 @@ class companyService{
             throw error;
         }
     }
+
+    static async addSelectedStudentToCompany(companyEmail, studentSapid) {
+        try {
+            const company = await companyModel.findOne({ email: companyEmail });
+    
+            if (company) {
+                if (company.studentsSelected.includes(studentSapid)) {
+                    return "Student already added to this company"; // Return a message if the student is already in the array
+                }
+    
+                const studentExists = await studentModel.findOne({ Sapid: studentSapid });
+    
+                if (studentExists) {
+                    company.studentsSelected.push(studentSapid);
+    
+                    const updatedCompany = await company.save();
+                    return updatedCompany;
+                } else {
+                    return "Student not found"; // Return a message if the student with the specified 'Sapid' was not found
+                }
+            } else {
+                return "Company not found"; // Return a message if the company with the specified email was not found
+            }
+        } catch (error) {
+            throw error;
+        }
+    }
     
     static async findCompaniesByStudentSapid(studentSapid) {
         try {

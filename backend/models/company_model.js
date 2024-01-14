@@ -23,6 +23,10 @@ const companySchema = new Schema({
         type:[Number],
         required : false,
     },
+    studentsSelected:{
+        type:[Number],
+        required : false,
+    },
 
     
 });
