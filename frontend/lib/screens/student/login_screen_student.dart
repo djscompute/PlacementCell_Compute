@@ -174,7 +174,7 @@ class loginbtn extends StatelessWidget {
                 };
 
                 var response = await http.post(
-                  Uri.parse("http://192.168.146.65:3000/student/login"),
+                  Uri.parse("http://192.168.193.65:3000/student/login"),
                   headers: {"Content-Type": "application/json"},
                   body: jsonEncode(regBody),
                 );
@@ -183,7 +183,6 @@ class loginbtn extends StatelessWidget {
 
                 if (jsonResponse['status'] == true) {
                   var myToken = jsonResponse['token'];
-                  // prefs.setString('token', myToken);
                   print(myToken);
 
                   Map<String, dynamic> jwtdecodedToken =

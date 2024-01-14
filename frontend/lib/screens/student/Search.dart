@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:placement_cell/models/company_model.dart';
+import 'package:placement_cell/screens/student/apply_company.dart';
 import 'package:placement_cell/utils/Card_company.dart';
 
 class SearchCompanies extends StatefulWidget {
@@ -122,9 +123,22 @@ class _SearchCompaniesState extends State<SearchCompanies> {
                     padding: const EdgeInsets.all(0),
                     itemCount: companies.length,
                     itemBuilder: (context, index) {
-                      return CompanyCard(
-                        title: companies[index].nameCompany,
-                        description: companies[index].department,
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ApplyCompany(
+                                        nameCompany:
+                                            companies[index].nameCompany,
+                                        department: companies[index].department,
+                                        companyEmail: companies[index].email,
+                                      )));
+                        },
+                        child: CompanyCard(
+                          title: companies[index].nameCompany,
+                          description: companies[index].department,
+                        ),
                       );
                     },
                   );
@@ -139,7 +153,7 @@ class _SearchCompaniesState extends State<SearchCompanies> {
 
   Future<List<Company>> fetchAllCompanies() async {
     var response = await http.get(
-      Uri.parse("http://192.168.146.65:3000/company/findallCompanies"),
+      Uri.parse("http://192.168.193.65:3000/company/findallCompanies"),
       headers: {"Content-Type": "application/json"},
     );
 

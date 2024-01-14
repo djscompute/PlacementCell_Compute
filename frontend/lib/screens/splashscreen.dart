@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:placement_cell/screens/optionscreen.dart';
 
-
-
 class Splash extends StatefulWidget {
   const Splash({super.key});
 
@@ -13,7 +11,6 @@ class Splash extends StatefulWidget {
 class _SplashState extends State<Splash> {
   @override
   void initState() {
-    // TODO: implement initState
     navigateToHome();
     super.initState();
   }
@@ -25,6 +22,7 @@ class _SplashState extends State<Splash> {
             builder: (context) => const OptionScreen()));
   }
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +31,7 @@ class _SplashState extends State<Splash> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(height: 200, width: 200, color: Colors.lightBlue,
+            Container(height: 200, width: 200, color: Colors.transparent,
             child: Image.asset('images/logo.jpg'),),
           ],
         ),
