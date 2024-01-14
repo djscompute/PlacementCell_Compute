@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:placement_cell/utils/Buttons.dart';
-import 'package:placement_cell/utils/Cards_HomeScreen.dart';
+
+import '../../utils/CardsCoordinator.dart';
 
 class CoordinatorHomeScreen extends StatefulWidget {
   const CoordinatorHomeScreen({
@@ -22,6 +23,7 @@ class _CoordinatorHomeScreenState extends State<CoordinatorHomeScreen> {
       backgroundColor: const Color.fromRGBO(1, 1, 24, 1),
       body: Stack(
         children: [
+          
           Column(
             children: [
               Container(
@@ -161,7 +163,7 @@ class _CoordinatorHomeScreenState extends State<CoordinatorHomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     // upload documents
-                    CardDescription(
+                    CoordinatorCards(
                       studentSapid: 0,
                       icon: Icon(
                         Icons.add,
@@ -172,7 +174,7 @@ class _CoordinatorHomeScreenState extends State<CoordinatorHomeScreen> {
                       index: 0,
                     ),
                     // apply for companies
-                    CardDescription(
+                    CoordinatorCards(
                       studentSapid: 0,
                       icon: Icon(
                         Icons.search,
@@ -191,7 +193,7 @@ class _CoordinatorHomeScreenState extends State<CoordinatorHomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     // applied or not
-                    CardDescription(
+                    CoordinatorCards(
                       studentSapid: 0,
                       title: "My Students",
                       icon: Icon(
@@ -203,7 +205,7 @@ class _CoordinatorHomeScreenState extends State<CoordinatorHomeScreen> {
                     ),
 
                     // profile
-                    CardDescription(
+                    CoordinatorCards(
                       studentSapid: 0,
                       title: "Profile",
                       icon: Icon(

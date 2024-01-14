@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LoginFormFields extends StatefulWidget {
+class NewFormFields extends StatefulWidget {
   final String text;
   final TextEditingController _controller;
-  const LoginFormFields(this.text, this._controller);
+  const NewFormFields(this.text, this._controller);
   @override
-  State<LoginFormFields> createState() => _LoginFormFieldsState();
+  State<NewFormFields> createState() => _NewFormFieldsState();
 }
 
-class _LoginFormFieldsState extends State<LoginFormFields> {
+class _NewFormFieldsState extends State<NewFormFields> {
   @override
   Widget build(BuildContext context) {
     return Container(

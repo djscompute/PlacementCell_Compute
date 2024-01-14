@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class CoordinatorProfile extends StatefulWidget {
-  const CoordinatorProfile({super.key});
+class ProfileCoordinator extends StatefulWidget {
+  const ProfileCoordinator({super.key});
 
   @override
-  State<CoordinatorProfile> createState() => _CoordinatorProfileState();
+  State<ProfileCoordinator> createState() => _ProfileCoordinatorState();
 }
 
-class _CoordinatorProfileState extends State<CoordinatorProfile> {
+class _ProfileCoordinatorState extends State<ProfileCoordinator> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

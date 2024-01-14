@@ -93,14 +93,14 @@ class _LoginPageStudentState extends State<LoginPageStudent> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    LoginFormFields('Email', _emailEditingController),
+                    NewFormFields('Email', _emailEditingController),
 
                     // sapid
 
-                    LoginFormFields('SAPID', _sapidEditingController),
+                    NewFormFields('SAPID', _sapidEditingController),
 
                     // apssword
-                    LoginFormFields('Password', _passwordEditingController),
+                    NewFormFields('Password', _passwordEditingController),
                   ],
                 )),
           ),
