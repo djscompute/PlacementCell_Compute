@@ -17,7 +17,6 @@ const studentSchema = new Schema({
         unique: true, // Ensures uniqueness
         validate: {
             validator: function(v) {
-                // Check if the Sapid is exactly 10 digits
                 return /^\d{11}$/.test(v.toString());
             },
             message: 'Sapid should have exactly 10 digits.'

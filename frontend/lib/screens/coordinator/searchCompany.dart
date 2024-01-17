@@ -12,7 +12,8 @@ class _Search_EditCompanyState extends State<Search_EditCompany> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text("This is hte screen where the coordinator can search for the different companies"),
+        child: Text(
+            "This is hte screen where the coordinator can search for the different companies"),
       ),
     );
   }

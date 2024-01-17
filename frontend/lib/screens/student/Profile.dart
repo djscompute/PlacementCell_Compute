@@ -14,7 +14,7 @@ class _ProfileStudentState extends State<ProfileStudent> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(1, 1, 24, 1),
+      backgroundColor: Colors.black,
       body: Stack(
         children: [
           Positioned(

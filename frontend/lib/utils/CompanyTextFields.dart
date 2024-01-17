@@ -15,7 +15,7 @@ class _CompanyTextFieldsState extends State<CompanyTextFields> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.fromLTRB(0, 10, 20, 10),
+      margin: const EdgeInsets.fromLTRB(20, 10, 20, 10),
       child: TextField(
         controller: widget.controller,
         style: GoogleFonts.montserrat(color: Colors.lightBlueAccent),
@@ -23,13 +23,13 @@ class _CompanyTextFieldsState extends State<CompanyTextFields> {
           labelText: widget.text,
           labelStyle: GoogleFonts.montserrat(color: Colors.lightBlueAccent),
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Colors.lightBlueAccent, // Border color when not selected
+              borderSide: const BorderSide(
+                color: Colors.lightBlueAccent,
                 width: 2.0,
               ),
               borderRadius: BorderRadius.circular(20)),
           focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(
+              borderSide: const BorderSide(
                 color: Colors.lightBlueAccent, // Border color when not selected
                 width: 2.0,
               ),

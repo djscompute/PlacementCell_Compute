@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:placement_cell/screens/optionscreen.dart';
+import 'package:placement_cell/screens/student/CreateStudentAccount.dart';
 import 'package:placement_cell/screens/student/homescreen.dart';
 import 'package:placement_cell/utils/loginformfields.dart';
 
@@ -24,7 +25,7 @@ class _LoginPageStudentState extends State<LoginPageStudent> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Color.fromRGBO(1, 1, 24, 10),
+      backgroundColor: Colors.black,
       body: Stack(
         children: [
           Positioned(
@@ -127,10 +128,10 @@ class _LoginPageStudentState extends State<LoginPageStudent> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        // Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //         builder: (context) => StudentHomeScreen()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => CreateStudentAccount()));
                       },
                       child: Text(" Create one!",
                           style: GoogleFonts.montserrat(

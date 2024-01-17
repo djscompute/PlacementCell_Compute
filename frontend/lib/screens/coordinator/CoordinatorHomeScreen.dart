@@ -20,10 +20,9 @@ class _CoordinatorHomeScreenState extends State<CoordinatorHomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      backgroundColor: const Color.fromRGBO(1, 1, 24, 1),
+      backgroundColor: Colors.black,
       body: Stack(
         children: [
-          
           Column(
             children: [
               Container(

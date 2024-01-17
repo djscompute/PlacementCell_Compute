@@ -24,7 +24,7 @@ class _ApplyCompanyState extends State<ApplyCompany> {
   Widget build(BuildContext context) {
     String branch = '';
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(1, 1, 24, 1),
+      backgroundColor: Colors.black,
       body: Stack(children: [
         // manual user defined function
 

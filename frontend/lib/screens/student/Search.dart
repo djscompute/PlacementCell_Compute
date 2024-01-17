@@ -28,7 +28,7 @@ class _SearchCompaniesState extends State<SearchCompanies> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(1, 1, 24, 1),
+      backgroundColor: Colors.black,
       body: Stack(
         children: [
           Positioned(
