@@ -1,21 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class CompanyCard extends StatefulWidget {
-  final String title;
-  final String description;
-  const CompanyCard(
-      {super.key, required this.title, required this.description});
+class StudentsCard extends StatefulWidget {
+  final String name;
+  final String surname;
+  final String branch;
+  final String email;
+  StudentsCard(
+      {required this.name,
+      required this.branch,
+      required this.surname,
+      required this.email});
 
   @override
-  State<CompanyCard> createState() => _CompanyCardState();
+  State<StudentsCard> createState() => _StudentsCardState();
 }
 
-class _CompanyCardState extends State<CompanyCard> {
+class _StudentsCardState extends State<StudentsCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+      margin: const EdgeInsets.fromLTRB(20, 0, 20, 10),
       height: 100,
       width: 160,
       decoration: BoxDecoration(
@@ -26,19 +31,19 @@ class _CompanyCardState extends State<CompanyCard> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
-            margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
             height: 70,
             width: 70,
+            margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               color: const Color.fromRGBO(1, 1, 24, 1),
             ),
             child: Center(
                 child: Text(
-              widget.title[0].toUpperCase() + widget.title[1].toUpperCase(),
+              widget.branch,
               style: GoogleFonts.montserrat(
                   color: Colors.lightBlueAccent,
-                  fontSize: 20,
+                  fontSize: 12,
                   fontWeight: FontWeight.w500),
             )),
           ),
@@ -47,12 +52,12 @@ class _CompanyCardState extends State<CompanyCard> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                widget.title.toUpperCase(),
+                widget.name.toUpperCase() + " " + widget.surname.toUpperCase(),
                 style: GoogleFonts.montserrat(
                     fontSize: 20, fontWeight: FontWeight.w600),
               ),
               Text(
-                widget.description,
+                widget.email,
                 style: GoogleFonts.montserrat(
                   fontSize: 14,
                   color: const Color.fromRGBO(1, 1, 24, 10),

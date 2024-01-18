@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:placement_cell/screens/optionscreen.dart';
 import 'package:placement_cell/screens/student/homescreen.dart';
+import 'package:placement_cell/screens/student/login_screen_student.dart';
 import '../../utils/CompanyTextFields.dart';
 import '../../utils/loginformfields.dart';
 
@@ -184,13 +185,7 @@ class registerbtn extends StatelessWidget {
 
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => StudentHomeScreen(
-                        sapid: int.parse(sapid),
-                        name: name,
-                        department: branch,
-                      ),
-                    ),
+                    MaterialPageRoute(builder: (context) => LoginPageStudent()),
                   );
                 } else {
                   print("Something went wrong");
