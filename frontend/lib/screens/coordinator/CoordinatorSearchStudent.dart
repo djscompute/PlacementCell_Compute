@@ -3,9 +3,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:placement_cell/models/student.dart';
-import 'package:placement_cell/screens/coordinator/StudentsDetails.dart';
+import 'package:placement_cell/screens/coordinator/CoordinatorGetStudentDetails.dart';
 import 'package:http/http.dart' as http;
-import 'package:placement_cell/utils/Students_Card.dart';
+import 'package:placement_cell/utils/CardsStudents.dart';
 
 class SearchStudents extends StatefulWidget {
   const SearchStudents({super.key});

@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:placement_cell/screens/coordinator/CoordinatorHomeScreen.dart';
 import 'package:placement_cell/utils/CompanyTextFields.dart';
-import 'package:placement_cell/utils/branch.dart';
+import 'package:placement_cell/utils/CardsBranch.dart';
 import 'package:http/http.dart' as http;
 
 class AddCompany extends StatefulWidget {
