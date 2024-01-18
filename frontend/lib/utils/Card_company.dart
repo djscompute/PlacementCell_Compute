@@ -19,7 +19,7 @@ class _CompanyCardState extends State<CompanyCard> {
       height: 100,
       width: 160,
       decoration: BoxDecoration(
-          color: const Color.fromRGBO(221, 221, 254, 1),
+          color: Color.fromRGBO(221, 221, 254, 1),
           borderRadius: BorderRadius.circular(12)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,

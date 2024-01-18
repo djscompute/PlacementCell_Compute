@@ -141,6 +141,7 @@ class _AddCompanyState extends State<AddCompany> {
                       },
                       child: BranchCard(
                         branch: branch,
+                        isSelected: true,
                       ),
                     );
                   }).toList(),
