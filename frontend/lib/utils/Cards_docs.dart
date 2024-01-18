@@ -4,8 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 class Docs extends StatefulWidget {
   final String text;
-  bool status;
-  Docs({super.key, required this.text, required this.status});
+  final bool status;
+  const Docs({super.key, required this.text, required this.status});
 
   @override
   State<Docs> createState() => _DocsState();

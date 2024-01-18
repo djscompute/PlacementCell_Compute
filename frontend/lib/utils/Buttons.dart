@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:placement_cell/screens/coordinator/CoordinatorHomeScreen.dart';
 import 'package:placement_cell/screens/student/login_screen_student.dart';
 
-class Mybutton extends StatefulWidget {
-  String option;
-  int number;
+import '../screens/coordinator/CoordinatorLoginScreen.dart';
 
-  Mybutton({super.key, required this.option, required this.number});
+class Mybutton extends StatefulWidget {
+  final String option;
+  final int number;
+
+  Mybutton({required this.option, required this.number});
 
   @override
   State<Mybutton> createState() => _MybuttonState();
 }
 
 class _MybuttonState extends State<Mybutton> {
-  final screens = [LoginPageStudent(),  CoordinatorHomeScreen()];
+  final screens = [const LoginPageStudent(), const CoordinatorLoginScreen()];
 
   @override
   Widget build(BuildContext context) {

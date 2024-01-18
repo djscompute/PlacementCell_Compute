@@ -1,5 +1,7 @@
 const coordinatorService = require('../services/coordinator_services');
 const studentModel = require('../models/student_model');
+
+
 exports.register = async(req,res,next)=>{
     try {
         const {email,Sapid,name,middlename,surname,department,password} = req.body;

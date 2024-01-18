@@ -62,7 +62,6 @@ coordinatorSchema.methods.comparePassword = async function(coordinatorPassword){
         const ismatch = await bcrypt.comparePassword(coordinatorPassword, this.password);
         return ismatch;
     }catch (error){
-
     }
 }
 

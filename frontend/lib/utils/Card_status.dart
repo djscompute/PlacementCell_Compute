@@ -4,9 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 class CardStatus extends StatefulWidget {
   final String title;
   final String description;
-  bool status;
+  final bool status;
 
-  CardStatus(
+  const CardStatus(
       {super.key, required this.title, required this.description, required this.status});
 
   @override

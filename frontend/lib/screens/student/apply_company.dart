@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
@@ -22,7 +21,6 @@ class ApplyCompany extends StatefulWidget {
 class _ApplyCompanyState extends State<ApplyCompany> {
   @override
   Widget build(BuildContext context) {
-    String branch = '';
     return Scaffold(
       backgroundColor: Colors.black,
       body: Stack(children: [

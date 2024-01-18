@@ -43,7 +43,7 @@ class _OptionScreenState extends State<OptionScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
-                  "Login as :",
+                  "Login As :",
                   style: GoogleFonts.montserrat(
                     fontSize: 30,
                     fontWeight: FontWeight.w700,
@@ -55,7 +55,7 @@ class _OptionScreenState extends State<OptionScreen> {
                   number: 0,
                 ),
                 Mybutton(
-                  option: "Cordinator",
+                  option: "Co-ordinator",
                   number: 1,
                 ),
               ],

@@ -1,13 +1,10 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:placement_cell/screens/coordinator/CoordinatorHomeScreen.dart';
-import 'package:placement_cell/screens/student/login_screen_student.dart';
 import 'package:placement_cell/utils/CompanyTextFields.dart';
 import 'package:placement_cell/utils/branch.dart';
-import 'package:placement_cell/utils/loginformfields.dart';
 import 'package:http/http.dart' as http;
 
 class AddCompany extends StatefulWidget {
@@ -22,7 +19,7 @@ class _AddCompanyState extends State<AddCompany> {
   TextEditingController _companyEmail = new TextEditingController();
   TextEditingController _companyDescription = new TextEditingController();
   String selectedBranch = '';
-
+  
   @override
   Widget build(BuildContext context) {
     List<String> branches = [
