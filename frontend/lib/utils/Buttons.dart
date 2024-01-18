@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:placement_cell/screens/student/login_screen_student.dart';
+import 'package:placement_cell/screens/student/StudentLoginScreen.dart';
 
 import '../screens/coordinator/CoordinatorLoginScreen.dart';
 

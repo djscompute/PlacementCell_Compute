@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:placement_cell/screens/coordinator/CoordinatorProfile.dart';
-import 'package:placement_cell/screens/coordinator/myStudents.dart';
-import 'package:placement_cell/screens/student/Search.dart';
+import 'package:placement_cell/screens/coordinator/CoordinatorSearchStudent.dart';
+import 'package:placement_cell/screens/student/StudentCompanySearch.dart';
 
-import '../screens/coordinator/addCompany.dart';
+import '../screens/coordinator/CoordinatorAddCompany.dart';
 
 class CoordinatorCards extends StatefulWidget {
   final String title;

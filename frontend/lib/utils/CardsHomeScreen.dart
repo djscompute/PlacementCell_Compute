@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:placement_cell/screens/student/Profile.dart';
-import 'package:placement_cell/screens/student/Search.dart';
-import 'package:placement_cell/screens/student/Status.dart';
-import 'package:placement_cell/screens/student/UploadDocs.dart';
+import 'package:placement_cell/screens/student/StudentProfile.dart';
+import 'package:placement_cell/screens/student/StudentCompanySearch.dart';
+import 'package:placement_cell/screens/student/StudentMyCompanyStatus.dart';
+import 'package:placement_cell/screens/student/StudentUploadDocs.dart';
 
 class CardDescription extends StatefulWidget {
   final String title;
