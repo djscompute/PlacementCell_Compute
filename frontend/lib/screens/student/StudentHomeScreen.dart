@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:placement_cell/utils/Buttons.dart';
-import 'package:placement_cell/utils/Cards_HomeScreen.dart';
+import 'package:placement_cell/utils/CardsHomeScreen.dart';
 
 class StudentHomeScreen extends StatefulWidget {
   final String name;

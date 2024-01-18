@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:placement_cell/screens/optionscreen.dart';
-import 'package:placement_cell/screens/student/login_screen_student.dart';
+import 'package:placement_cell/screens/student/StudentLoginScreen.dart';
 import 'package:placement_cell/utils/CompanyTextFields.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';

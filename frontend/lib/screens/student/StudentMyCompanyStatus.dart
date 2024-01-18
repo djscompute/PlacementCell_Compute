@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:placement_cell/utils/Card_status.dart';
+import 'package:placement_cell/utils/CardsStatus.dart';
 
 class Status extends StatefulWidget {
   const Status({super.key});

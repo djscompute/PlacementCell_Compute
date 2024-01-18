@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:placement_cell/screens/optionscreen.dart';
-import 'package:placement_cell/screens/student/CreateStudentAccount.dart';
-import 'package:placement_cell/screens/student/homescreen.dart';
+import 'package:placement_cell/screens/student/StudentCreateAccount.dart';
+import 'package:placement_cell/screens/student/StudentHomeScreen.dart';
 import 'package:placement_cell/utils/loginformfields.dart';
 
 class LoginPageStudent extends StatefulWidget {

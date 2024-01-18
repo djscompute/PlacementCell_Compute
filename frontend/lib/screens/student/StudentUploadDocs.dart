@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:placement_cell/utils/Cards_docs.dart';
+import 'package:placement_cell/utils/CardsDocs.dart';
 
 class UploadDocs extends StatelessWidget {
   const UploadDocs({Key? key}) : super(key: key);

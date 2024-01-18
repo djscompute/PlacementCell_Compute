@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:placement_cell/models/company_model.dart';
-import 'package:placement_cell/screens/student/apply_company.dart';
-import 'package:placement_cell/utils/Card_company.dart';
+import 'package:placement_cell/screens/student/StudentApplyInCompany.dart';
+import 'package:placement_cell/utils/CardsCompany.dart';
 
 class SearchCompanies extends StatefulWidget {
   final int studentSapid;
