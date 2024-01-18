@@ -2,6 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
+import 'package:placement_cell/screens/coordinator/CoordinatorHomeScreen.dart';
+import 'package:placement_cell/screens/student/login_screen_student.dart';
 import 'package:placement_cell/utils/CompanyTextFields.dart';
 import 'package:placement_cell/utils/branch.dart';
 import 'package:placement_cell/utils/loginformfields.dart';
@@ -92,7 +95,7 @@ class _AddCompanyState extends State<AddCompany> {
                     top: 90,
                     left: 40,
                     child: Text(
-                      "Search Company",
+                      "Add Company",
                       style: GoogleFonts.montserrat(
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
@@ -186,7 +189,7 @@ class _AddCompanyState extends State<AddCompany> {
     );
   }
 
-  void addCompany(email, name, department) async {
+  Future<void> addCompany(email, name, department) async {
     const url = 'http://192.168.193.65:3000/company/registration';
 
     Map<String, dynamic> data = {
@@ -195,20 +198,49 @@ class _AddCompanyState extends State<AddCompany> {
       "department": department,
     };
 
-    final http.Response response = await http.post(
-      Uri.parse(url),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
+    try {
+      final http.Response response = await http.post(
+        Uri.parse(url),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(data),
+      );
+
+      var jsonResponse = jsonDecode(response.body);
+
+      if (jsonResponse['status'] == true) {
+        print("Company added successfully");
+        _showSuccessDialog();
+      } else {
+        print("Something went wrong");
+      }
+    } catch (error) {
+      print("Error occurred: $error");
+      // Handle the error as needed, e.g., show an error message
+    }
+  }
+
+  void _showSuccessDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Colors.transparent,
+          content: LottieBuilder.network(
+            'https://lottie.host/e3418798-02d3-45ca-b741-93a272044228/hCKpIC8lWE.json',
+          ),
+          actions: [],
+        );
       },
-      body: jsonEncode(data),
     );
 
-    if (response.statusCode == 201) {
-      print("Company added");
-      print(jsonDecode(response.body));
-    } else {
-      print("Failed to create company");
-      print(response.body);
-    }
+    // Delayed navigation after showing the dialog
+    Future.delayed(Duration(seconds: 3), () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => CoordinatorHomeScreen()),
+      );
+    });
   }
 }
