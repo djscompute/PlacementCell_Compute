@@ -26,10 +26,19 @@ exports.login = async (req, res, next) => {
             throw new Error("Password invalid");
         }
 
-        let tokenData = { _id: student._id, email: student.email, name: student.name, department: student.department };
-
-        const token = await studentService.generatetoken(tokenData, "secretKey", '1h');
-        res.status(200).json({ status: true, token: token });
+        // Instead of returning just the token, return the student details
+        res.status(200).json({
+            status: true,
+            student: {
+                email: student.email,
+                name: student.name,
+                middlename: student.middlename,
+                surname: student.surname,
+                department: student.department,
+                Sapid: student.Sapid,
+                yearPassing: student.yearPassing,
+            }
+        });
     } catch (error) {
         throw error;
     }
@@ -44,3 +53,10 @@ exports.getAllStudents = async (req, res, next) => {
     }
 }
 
+exports.uploadPdf = async (req, res, next) => {
+    try {
+        await studentService.uploadPdf(req, res);
+    } catch (error) {
+        throw error;
+    }
+}
