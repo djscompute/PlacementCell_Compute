@@ -17,7 +17,8 @@ class StudentsDetails extends StatefulWidget {
     required this.surname,
     required this.branch,
     required this.Sapid,
-    required this.email, required this.yearPassing,
+    required this.email,
+    required this.yearPassing,
   }) : super(key: key);
 
   @override
@@ -109,7 +110,9 @@ class _StudentsDetailsState extends State<StudentsDetails> {
                 ProfileBoxes(name: "Branch", value: widget.branch),
                 ProfileBoxes(name: "Email", value: widget.email),
                 ProfileBoxes(name: "CGPA", value: "8.8"),
-                ProfileBoxes(name: "Year of Passing", value: widget.yearPassing.toString()),
+                ProfileBoxes(
+                    name: "Year of Passing",
+                    value: widget.yearPassing.toString()),
                 ProfileBoxes(name: "Placed", value: "Not Yet"),
               ],
             ),

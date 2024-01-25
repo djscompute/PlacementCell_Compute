@@ -208,7 +208,7 @@ class _CoordinatorHomeScreenState extends State<CoordinatorHomeScreen> {
                       studentSapid: 0,
                       title: "Profile",
                       icon: Icon(
-                        Icons.person_2_outlined,
+                        Icons.person,
                         size: 50,
                         color: Color.fromRGBO(1, 1, 24, 1),
                       ),

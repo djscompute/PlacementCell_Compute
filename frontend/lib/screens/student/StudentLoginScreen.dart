@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:placement_cell/screens/optionscreen.dart';
 import 'package:placement_cell/screens/student/StudentCreateAccount.dart';
 import 'package:placement_cell/screens/student/StudentHomeScreen.dart';
@@ -16,14 +15,28 @@ class LoginPageStudent extends StatefulWidget {
 }
 
 class _LoginPageStudentState extends State<LoginPageStudent> {
+  bool isLoading = false;
+
   final TextEditingController _passwordEditingController =
       TextEditingController();
   final TextEditingController _emailEditingController = TextEditingController();
   final TextEditingController _sapidEditingController = TextEditingController();
 
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _passwordEditingController.dispose();
+    _emailEditingController.dispose();
+    _sapidEditingController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.black,
       body: Stack(
@@ -106,10 +119,37 @@ class _LoginPageStudentState extends State<LoginPageStudent> {
                 )),
           ),
 
-          loginbtn(
-              email: _emailEditingController.text,
-              sapid: _sapidEditingController.text,
-              password: _passwordEditingController.text),
+          Positioned(
+            bottom: 70,
+            left: 40,
+            right: 40,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: ElevatedButton(
+                onPressed: isLoading ? null : () => _handleLogin(),
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all(Color.fromRGBO(1, 1, 24, 10)),
+                ),
+                child: Container(
+                  padding: EdgeInsets.fromLTRB(0, 25, 0, 25),
+                  child: isLoading
+                      ? CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                              Colors.lightBlueAccent),
+                        )
+                      : Text(
+                          "Login!",
+                          style: GoogleFonts.montserrat(
+                            color: Colors.lightBlueAccent,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                ),
+              ),
+            ),
+          ),
 
           //one line
           Positioned(
@@ -146,88 +186,67 @@ class _LoginPageStudentState extends State<LoginPageStudent> {
       ),
     );
   }
-}
 
-class loginbtn extends StatelessWidget {
-  final String email;
-  final String sapid;
-  final String password;
-  loginbtn({required this.email, required this.sapid, required this.password});
+  void _handleLogin() async {
+    setState(() {
+      isLoading = true;
+    });
 
-  @override
-  Widget build(BuildContext context) {
-    return Positioned(
-      bottom: 70,
-      left: 40,
-      right: 40,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
-        child: ElevatedButton(
-          onPressed: () async {
-            print("button pressed");
-            if (email.isNotEmpty && sapid.isNotEmpty && password.isNotEmpty) {
-              print('Button clicked');
-              try {
-                var regBody = {
-                  "email": email,
-                  "Sapid": int.parse(sapid),
-                  "password": password,
-                };
+    try {
+      var regBody = {
+        "email": _emailEditingController.text,
+        "Sapid": int.parse(_sapidEditingController.text),
+        "password": _passwordEditingController.text,
+      };
 
-                var response = await http.post(
-                  Uri.parse("http://192.168.193.65:3000/student/login"),
-                  headers: {"Content-Type": "application/json"},
-                  body: jsonEncode(regBody),
-                );
+      // Check if widget.sapid is a valid numeric string
+      if (_sapidEditingController.text.isEmpty ||
+          !_sapidEditingController.text.trim().contains(RegExp(r'^\d+$'))) {
+        print("Invalid SAPID: '${_sapidEditingController.text}'");
+        // Handle the error, maybe show a message to the user
+        return;
+      }
 
-                var jsonResponse = jsonDecode(response.body);
+      var response = await http.post(
+        Uri.parse("http://192.168.193.65:3000/student/login"),
+        headers: {"Content-Type": "application/json"},
+        body: jsonEncode(regBody),
+      );
 
-                if (jsonResponse['status'] == true) {
-                  var myToken = jsonResponse['token'];
-                  print(myToken);
+      var jsonResponse = jsonDecode(response.body);
 
-                  Map<String, dynamic> jwtdecodedToken =
-                      JwtDecoder.decode(myToken);
-                  print(jwtdecodedToken);
+      if (jsonResponse != null && jsonResponse['status'] == true) {
+        // Extract student details directly from the response
+        var studentDetails = jsonResponse['student'];
 
-                  String name = jwtdecodedToken['name'];
-                  String department = jwtdecodedToken['department'];
+        if (studentDetails != null) {
+          String name = studentDetails['name'];
+          String department = studentDetails['department'];
 
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => StudentHomeScreen(
-                        sapid: int.parse(sapid),
-                        name: name,
-                        department: department,
-                      ),
-                    ),
-                  );
-                } else {
-                  print("Something went wrong");
-                }
-              } catch (error) {
-                print("An error occurred: $error");
-              }
-            }
-          },
-          style: const ButtonStyle(
-            backgroundColor:
-                MaterialStatePropertyAll(Color.fromRGBO(1, 1, 24, 10)),
-          ),
-          child: Container(
-            padding: const EdgeInsets.fromLTRB(0, 25, 0, 25),
-            child: Text(
-              "Login!",
-              style: GoogleFonts.montserrat(
-                color: Colors.lightBlueAccent,
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
+          int sapid = int.parse(_sapidEditingController.text);
+
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => StudentHomeScreen(
+                sapid: sapid,
+                name: name,
+                department: department,
               ),
             ),
-          ),
-        ),
-      ),
-    );
+          );
+        } else {
+          print("Student details not found in the response");
+        }
+      } else {
+        print("Something went wrong");
+      }
+    } catch (error) {
+      print("An error occurred: $error");
+    } finally {
+      setState(() {
+        isLoading = false;
+      });
+    }
   }
 }

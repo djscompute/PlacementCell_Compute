@@ -175,7 +175,7 @@ class _CreateStudentAccountState extends State<CreateStudentAccount> {
       "department": _branchController.text,
       "email": _emailController.text,
       "yearPassing": 2025, // Assuming this is an int
-      "Sapid": int.parse(_sapidController.text),
+      "Sapid": _sapidController.text,
       "password": _passwordController.text,
     };
 
