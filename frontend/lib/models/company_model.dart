@@ -3,8 +3,10 @@ class Company {
   final String nameCompany;
   final String department;
   final List<int> studentsApplied;
+  final List<int> studentsSelected;
 
   Company({
+    required this.studentsSelected,
     required this.email,
     required this.nameCompany,
     required this.department,
@@ -18,6 +20,7 @@ class Company {
       nameCompany: json['name'],
       department: json['department'],
       studentsApplied: List<int>.from(json['studentsApplied']),
+      studentsSelected: List<int>.from(json['studentsSelected']),
     );
   }
 }

@@ -5,6 +5,7 @@ import 'package:placement_cell/screens/coordinator/CoordinatorSearchStudent.dart
 import 'package:placement_cell/screens/student/StudentCompanySearch.dart';
 
 import '../screens/coordinator/CoordinatorAddCompany.dart';
+import '../screens/coordinator/CoordinatorSearchCompany.dart';
 
 class CoordinatorCards extends StatefulWidget {
   final String title;
@@ -29,7 +30,7 @@ class _CoordinatorCardsState extends State<CoordinatorCards> {
   Widget build(BuildContext context) {
     final screens = [
       const AddCompany(),
-      const SearchCompanies(studentSapid: 0),
+      const Search_EditCompany(),
       const SearchStudents(),
       const ProfileCoordinator()
     ];

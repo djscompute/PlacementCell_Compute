@@ -19,7 +19,7 @@ class _AddCompanyState extends State<AddCompany> {
   TextEditingController _companyEmail = new TextEditingController();
   TextEditingController _companyDescription = new TextEditingController();
   String selectedBranch = '';
-  
+
   @override
   Widget build(BuildContext context) {
     List<String> branches = [
