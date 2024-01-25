@@ -296,7 +296,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                 bottom: 20,
                 left: 0,
                 right: 0,
-                child: Center(child: Mybutton(option: "Logout", number: 1)))
+                child: Center(child: Mybutton(option: "Logout", number: 0)))
           ],
         ),
       ),

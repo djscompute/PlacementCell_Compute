@@ -39,8 +39,7 @@ class _PdfUploadScreenState extends State<PdfUploadScreen> {
     try {
       var request = http.MultipartRequest(
         'POST',
-        Uri.parse(
-            'http://192.168.193.65:3000/student/uploadpdf'), // Replace with your API endpoint
+        Uri.parse('http://192.168.193.65:3000/student/uploadpdf'),
       );
 
       request.files.add(
@@ -58,6 +57,7 @@ class _PdfUploadScreenState extends State<PdfUploadScreen> {
       } else {
         // Handle the error response
         print('Error uploading file: ${response.reasonPhrase}');
+        print('Response body: ${await response.stream.bytesToString()}');
       }
     } catch (error) {
       // Handle other errors

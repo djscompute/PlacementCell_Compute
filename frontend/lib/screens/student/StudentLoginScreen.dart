@@ -193,19 +193,28 @@ class _LoginPageStudentState extends State<LoginPageStudent> {
     });
 
     try {
-      var regBody = {
-        "email": _emailEditingController.text,
-        "Sapid": int.parse(_sapidEditingController.text),
-        "password": _passwordEditingController.text,
-      };
+      var email = _emailEditingController.text;
+      var sapid = _sapidEditingController.text;
+      var password = _passwordEditingController.text;
 
-      // Check if widget.sapid is a valid numeric string
-      if (_sapidEditingController.text.isEmpty ||
-          !_sapidEditingController.text.trim().contains(RegExp(r'^\d+$'))) {
-        print("Invalid SAPID: '${_sapidEditingController.text}'");
+      // Check if email, sapid, and password are not empty
+      if (email.isEmpty || sapid.isEmpty || password.isEmpty) {
+        print("Please fill in all the fields");
+        return;
+      }
+
+      // Check if sapid is a valid numeric string
+      if (!sapid.trim().contains(RegExp(r'^\d+$'))) {
+        print("Invalid SAPID: '$sapid'");
         // Handle the error, maybe show a message to the user
         return;
       }
+
+      var regBody = {
+        "email": email,
+        "Sapid": int.parse(sapid),
+        "password": password,
+      };
 
       var response = await http.post(
         Uri.parse("http://192.168.193.65:3000/student/login"),
@@ -239,7 +248,7 @@ class _LoginPageStudentState extends State<LoginPageStudent> {
           print("Student details not found in the response");
         }
       } else {
-        print("Something went wrong");
+        print("Login failed: ${jsonResponse['message']}");
       }
     } catch (error) {
       print("An error occurred: $error");
