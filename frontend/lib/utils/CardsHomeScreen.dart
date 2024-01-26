@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:placement_cell/screens/student/StudentProfile.dart';
 import 'package:placement_cell/screens/student/StudentCompanySearch.dart';
-import 'package:placement_cell/screens/student/StudentMyCompanyStatus.dart';
+import 'package:placement_cell/screens/student/StudentAppliedCompanyStatus.dart';
 import 'package:placement_cell/screens/student/StudentUploadDocs.dart';
 import 'package:placement_cell/screens/student/testinguploadddocs.dart';
 
@@ -30,7 +30,7 @@ class _CardDescriptionState extends State<CardDescription> {
     final screens = [
       PdfUploadScreen(),
       SearchCompanies(studentSapid: widget.studentSapid),
-      const Status(),
+       Status( Sapid: widget.studentSapid),
       const ProfileStudent()
     ];
 

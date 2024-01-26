@@ -108,7 +108,7 @@ class companyService{
             }
     
             // Return the list of companies where the student has applied
-            return companies.map((company) => company.name);
+            return companies;
         } catch (error) {
             throw error;
         }

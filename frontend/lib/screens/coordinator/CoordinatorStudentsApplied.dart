@@ -100,26 +100,22 @@ class _CompanyStudentsAppliedInState extends State<CompanyStudentsAppliedIn> {
               future: getAllstudents(widget.studentsApplied),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  // While data is loading
                   return Center(
                     child: CircularProgressIndicator(
                       color: Colors.lightBlueAccent,
                     ),
                   );
                 } else if (snapshot.hasError) {
-                  // If there is an error
                   return Center(
                     child: Text('Error: ${snapshot.error}'),
                   );
                 } else {
-                  // If data is loaded successfully
                   List<User> students = snapshot.data ?? [];
                   return ListView.builder(
                     padding: const EdgeInsets.all(0),
                     itemCount: students.length,
                     itemBuilder: (context, index) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
-                        // While data is loading
                         return Center(
                           child: CircularProgressIndicator(
                             color: Colors.lightBlueAccent,
@@ -187,7 +183,7 @@ class _CompanyStudentsAppliedInState extends State<CompanyStudentsAppliedIn> {
       studentsList.forEach((element) {
         print(element.sapid);
       });
-      // Keep only the students whose sapid is present in appliedStudents
+
       studentsList.retainWhere((student) {
         bool shouldRetain = appliedStudents.contains(student.sapid);
         if (!shouldRetain) {
@@ -196,7 +192,6 @@ class _CompanyStudentsAppliedInState extends State<CompanyStudentsAppliedIn> {
         return shouldRetain;
       });
 
-      // Now studentsList contains only the desired students
       print(studentsList);
       return studentsList;
     } else {

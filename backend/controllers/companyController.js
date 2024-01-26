@@ -28,7 +28,7 @@ exports.addStudentToCompany = async (req, res, next) => {
 
 exports.findCompaniesByStudentSapid = async (req, res, next) => {
     try {
-        const { studentSapid } = req.params; // Assuming the SAP ID is in the request parameters
+        const { studentSapid } = req.body; // Assuming the SAP ID is in the request parameters
 
         const companies = await companyService.findCompaniesByStudentSapid(studentSapid);
 
@@ -37,7 +37,7 @@ exports.findCompaniesByStudentSapid = async (req, res, next) => {
         } else if (companies === "You haven't applied to any companies yet. Keep exploring opportunities!") {
             res.status(200).json({ status: true, message: "🌟 You haven't applied to any companies yet. Keep exploring opportunities! 🚀" });
         } else {
-            res.status(200).json({ status: true, message: "🎉 You've applied to these companies: " + companies.join(', ') + " 🌟" });
+            res.status(200).json({ status: true, message: "🎉 You've applied to these companies: ", company : companies});
         }
     } catch (error) {
         throw error;
