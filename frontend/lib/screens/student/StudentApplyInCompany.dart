@@ -22,6 +22,8 @@ class ApplyCompany extends StatefulWidget {
 }
 
 class _ApplyCompanyState extends State<ApplyCompany> {
+  TextEditingController _resumeController = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,7 +68,7 @@ class _ApplyCompanyState extends State<ApplyCompany> {
             right: 40,
             child: Center(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Container(
                     height: 100,
@@ -94,10 +96,13 @@ class _ApplyCompanyState extends State<ApplyCompany> {
                       ),
                     ),
                   ),
+                  SizedBox(
+                    width: 20,
+                  ),
                   Text(
-                    widget.companyEmail,
+                    widget.nameCompany,
                     style: GoogleFonts.montserrat(
-                      fontSize: 14,
+                      fontSize: 18,
                       fontWeight: FontWeight.w500,
                       color: Colors.lightBlueAccent,
                     ),
@@ -106,6 +111,72 @@ class _ApplyCompanyState extends State<ApplyCompany> {
               ),
             ),
           ),
+          Positioned(
+            top: 190,
+            left: 20,
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Colors.lightBlueAccent,
+                ),
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              padding: const EdgeInsets.all(8.0),
+              margin: EdgeInsets.symmetric(horizontal: 5),
+              child: Text(
+                widget.department,
+                style: GoogleFonts.montserrat(color: Colors.lightBlueAccent),
+              ),
+            ),
+          ),
+          Positioned(
+            top: 240,
+            left: 20,
+            right: 20,
+            bottom: 300,
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Colors.grey.shade800.withOpacity(0.4),
+              ),
+              child: Center(
+                  child: Text(
+                "here description about the company",
+                style: GoogleFonts.montserrat(
+                    color: Colors.lightBlueAccent,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w300),
+              )),
+            ),
+          ),
+          Positioned(
+            bottom: 120,
+            left: 20,
+            right: 20,
+            child: TextField(
+              controller: _resumeController,
+              style: GoogleFonts.montserrat(color: Colors.lightBlueAccent),
+              decoration: InputDecoration(
+                labelText: "Resume Drive Link",
+                labelStyle:
+                    GoogleFonts.montserrat(color: Colors.lightBlueAccent),
+                enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(
+                      color: Colors.lightBlueAccent,
+                      width: 2.0,
+                    ),
+                    borderRadius: BorderRadius.circular(20)),
+                focusedBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(
+                      color: Colors
+                          .lightBlueAccent, // Border color when not selected
+                      width: 2.0,
+                    ),
+                    borderRadius: BorderRadius.circular(20)),
+              ),
+            ),
+          )
         ],
       ),
     );

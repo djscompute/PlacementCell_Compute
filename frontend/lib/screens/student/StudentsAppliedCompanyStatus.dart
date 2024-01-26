@@ -1,19 +1,29 @@
 import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import '../../models/company_model.dart';
 import '../../utils/CardsCompany.dart';
+import '../../utils/CardsStatus.dart';
 
-class Status extends StatefulWidget {
+class AppliedCompanyStatus extends StatefulWidget {
   final int Sapid;
-  const Status({super.key, required this.Sapid});
+  const AppliedCompanyStatus({required this.Sapid});
 
   @override
-  State<Status> createState() => _StatusState();
+  State<AppliedCompanyStatus> createState() => _AppliedCompanyStatusState();
 }
 
-class _StatusState extends State<Status> {
+class _AppliedCompanyStatusState extends State<AppliedCompanyStatus> {
+  // bool setStatus(List<int> givenArray) {
+  //   if (givenArray.contains(widget.Sapid)) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -113,9 +123,13 @@ class _StatusState extends State<Status> {
                     padding: const EdgeInsets.all(0),
                     itemCount: companies.length,
                     itemBuilder: (context, index) {
-                      return CompanyCard(
+                      bool stats = companies[index]
+                          .studentsSelected
+                          .contains(widget.Sapid);
+                      return CardStatus(
                         title: companies[index].nameCompany,
                         description: companies[index].department,
+                        status: stats,
                       );
                     },
                   );

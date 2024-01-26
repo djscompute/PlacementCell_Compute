@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:placement_cell/screens/student/StudentsAppliedCompanyStatus.dart';
 import 'package:placement_cell/utils/Buttons.dart';
 import 'package:placement_cell/utils/CardsHomeScreen.dart';
 
@@ -123,18 +124,29 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                         ],
                       ),
                     ),
-                    const Positioned(
+                    Positioned(
                       top: 240,
                       left: 40,
                       child: Row(
                         children: [
-                          SearchIcon(
-                              icon: Icon(
-                                Icons.timer_outlined,
-                                size: 40,
-                                color: Color.fromRGBO(1, 1, 24, 1),
-                              ),
-                              searchoption: "Status"),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          AppliedCompanyStatus(
+                                            Sapid: widget.sapid,
+                                          )));
+                            },
+                            child: SearchIcon(
+                                icon: Icon(
+                                  Icons.timer_outlined,
+                                  size: 40,
+                                  color: Color.fromRGBO(1, 1, 24, 1),
+                                ),
+                                searchoption: "Status"),
+                          ),
                           SizedBox(
                             width: 30,
                           ),

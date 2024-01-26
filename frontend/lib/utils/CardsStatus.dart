@@ -7,7 +7,10 @@ class CardStatus extends StatefulWidget {
   final bool status;
 
   const CardStatus(
-      {super.key, required this.title, required this.description, required this.status});
+      {super.key,
+      required this.title,
+      required this.description,
+      required this.status});
 
   @override
   State<CardStatus> createState() => _CardStatusState();
@@ -26,51 +29,57 @@ class _CardStatusState extends State<CardStatus> {
           color: const Color.fromRGBO(221, 221, 254, 1),
           borderRadius: BorderRadius.circular(12)),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(
-            height: 70,
-            width: 70,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              color: const Color.fromRGBO(1, 1, 24, 1),
-            ),
-            child: Center(
-                child: Text(
-              widget.title[0] + widget.title[1].toUpperCase(),
-              style: GoogleFonts.montserrat(
-                  color: Colors.lightBlueAccent,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500),
-            )),
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
+          Row(
             children: [
-              Text(
-                widget.title,
-                style: GoogleFonts.montserrat(
-                    fontSize: 20, fontWeight: FontWeight.w600),
-              ),
-              Text(
-                widget.description,
-                style: GoogleFonts.montserrat(
-                  fontSize: 14,
-                  color: const Color.fromRGBO(1, 1, 24, 10),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10),
+                height: 70,
+                width: 70,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: const Color.fromRGBO(1, 1, 24, 1),
                 ),
+                child: Center(
+                    child: Text(
+                  widget.title[0] + widget.title[1].toUpperCase(),
+                  style: GoogleFonts.montserrat(
+                      color: Colors.lightBlueAccent,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500),
+                )),
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    widget.title,
+                    style: GoogleFonts.montserrat(
+                        fontSize: 20, fontWeight: FontWeight.w600),
+                  ),
+                  Text(
+                    widget.description,
+                    style: GoogleFonts.montserrat(
+                      fontSize: 14,
+                      color: const Color.fromRGBO(1, 1, 24, 10),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
           Container(
-            height: 50,
-            width: 50,
+            margin: EdgeInsets.only(right: 10),
+            height: 35,
+            width: 35,
             decoration: BoxDecoration(
-                color: color, borderRadius: BorderRadius.circular(12)),
+                color: color, borderRadius: BorderRadius.circular(10)),
             child: Icon(
               icon,
-              size: 40,
+              size: 30,
               color: Colors.white,
             ),
           ),

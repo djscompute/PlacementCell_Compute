@@ -1,28 +1,19 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:placement_cell/screens/coordinator/CoordinatorEditCompany.dart';
+import 'package:http/http.dart' as http;
 import '../../models/company_model.dart';
 import '../../utils/CardsCompany.dart';
-import 'package:http/http.dart' as http;
 
-class Search_EditCompany extends StatefulWidget {
-  const Search_EditCompany({super.key});
+class AppliedCompanies extends StatefulWidget {
+  final int Sapid;
+  const AppliedCompanies({super.key, required this.Sapid});
 
   @override
-  State<Search_EditCompany> createState() => _Search_EditCompanyState();
+  State<AppliedCompanies> createState() => _AppliedCompaniesState();
 }
 
-class _Search_EditCompanyState extends State<Search_EditCompany> {
-  late Future<List<Company>> listofCompanies;
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    listofCompanies = fetchAllCompanies();
-  }
-
+class _AppliedCompaniesState extends State<AppliedCompanies> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,7 +74,7 @@ class _Search_EditCompanyState extends State<Search_EditCompany> {
                     top: 90,
                     left: 40,
                     child: Text(
-                      "Search Company",
+                      "Applied Companies",
                       style: GoogleFonts.montserrat(
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
@@ -101,7 +92,7 @@ class _Search_EditCompanyState extends State<Search_EditCompany> {
             right: 20,
             bottom: 0,
             child: FutureBuilder<List<Company>>(
-              future: listofCompanies,
+              future: fetchAppliedCompanies(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   // While data is loading
@@ -122,26 +113,9 @@ class _Search_EditCompanyState extends State<Search_EditCompany> {
                     padding: const EdgeInsets.all(0),
                     itemCount: companies.length,
                     itemBuilder: (context, index) {
-                      return GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => EditCompany(
-                                        nameCompany:
-                                            companies[index].nameCompany,
-                                        department: companies[index].department,
-                                        companyEmail: companies[index].email,
-                                        studentsApplied:
-                                            companies[index].studentsApplied,
-                                        studentsSelected:
-                                            companies[index].studentsSelected,
-                                      )));
-                        },
-                        child: CompanyCard(
-                          title: companies[index].nameCompany,
-                          description: companies[index].department,
-                        ),
+                      return CompanyCard(
+                        title: companies[index].nameCompany,
+                        description: companies[index].department,
                       );
                     },
                   );
@@ -154,21 +128,23 @@ class _Search_EditCompanyState extends State<Search_EditCompany> {
     );
   }
 
-  Future<List<Company>> fetchAllCompanies() async {
-    var response = await http.get(
-      Uri.parse("http://192.168.193.65:3000/company/findallCompanies"),
+  Future<List<Company>> fetchAppliedCompanies() async {
+    final Map<String, dynamic> reqBody = {"studentSapid": widget.Sapid};
+
+    var response = await http.post(
+      Uri.parse("http://192.168.193.65:3000/company/findstudents"),
       headers: {"Content-Type": "application/json"},
+      body: jsonEncode(reqBody),
     );
 
     var jsonResponse = jsonDecode(response.body);
 
     if (jsonResponse['status'] == true) {
-      var companiesData = jsonResponse['companies'] as List<dynamic>;
+      var companiesData = jsonResponse['company'] as List<dynamic>;
 
       List<Company> companiesList = companiesData
           .map((companyJson) => Company.fromJson(companyJson))
           .toList();
-      print(companiesList);
       return companiesList;
     } else {
       throw Exception('Failed to load companies');
