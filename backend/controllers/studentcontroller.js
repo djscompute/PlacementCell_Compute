@@ -44,6 +44,18 @@ exports.login = async (req, res, next) => {
     }
 }
 
+exports.studentDetails = async (req, res, next)=>{
+    try {
+        const { studentSapid } = req.body;
+        const student = await studentService.studentDetails(studentSapid);
+
+        res.status(200).json({status: true, student : student});
+
+    } catch (error) {
+        throw error;
+    }
+}
+
 exports.getAllStudents = async (req, res, next) => {
     try {
         const allStudents = await studentService.getAllStudents();

@@ -21,6 +21,14 @@ class studentService{
         }
     }
 
+    static async studentDetails(sapid){
+      try {
+        return await studentModel.findOne({Sapid: parseInt(sapid)});
+      } catch (error) {
+        throw error;
+      }
+    }
+
     static async getAllStudents() {
         try {
             return await studentModel.find({});
