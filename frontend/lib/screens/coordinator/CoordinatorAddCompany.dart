@@ -19,6 +19,7 @@ class _AddCompanyState extends State<AddCompany> {
   TextEditingController _companyEmail = new TextEditingController();
   TextEditingController _companyDescription = new TextEditingController();
   String selectedBranch = '';
+  List<String> selectedBranches = [];
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,6 @@ class _AddCompanyState extends State<AddCompany> {
       'EXTC',
       'MECH'
     ];
-    List<String> selectedBranches = [];
 
     return Scaffold(
       backgroundColor: const Color.fromRGBO(1, 1, 24, 1),
@@ -131,14 +131,37 @@ class _AddCompanyState extends State<AddCompany> {
                   spacing: 5.0,
                   runSpacing: 8.0,
                   children: branches.map((branch) {
+                    bool isSelected = selectedBranches.contains(branch);
                     return GestureDetector(
                       onTap: () {
-                        selectedBranches.add(branch);
-                        print(selectedBranches);
+                        setState(() {
+                          if (isSelected) {
+                            selectedBranches.remove(branch);
+                          } else {
+                            selectedBranches.add(branch);
+                          }
+                        });
                       },
-                      child: BranchCard(
-                        branch: branch,
-                        isSelected: true,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.lightBlueAccent,
+                          ),
+                          color: isSelected
+                              ? Colors.lightBlueAccent
+                              : Colors.black,
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        padding: const EdgeInsets.all(8.0),
+                        margin: EdgeInsets.symmetric(horizontal: 5),
+                        child: Text(
+                          branch,
+                          style: GoogleFonts.montserrat(
+                            color: isSelected
+                                ? Colors.black
+                                : Colors.lightBlueAccent,
+                          ),
+                        ),
                       ),
                     );
                   }).toList(),

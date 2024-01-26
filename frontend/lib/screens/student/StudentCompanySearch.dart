@@ -132,14 +132,14 @@ class _SearchCompaniesState extends State<SearchCompanies> {
                                   builder: (context) => ApplyCompany(
                                         nameCompany:
                                             companies[index].nameCompany,
-                                        department: companies[index].department,
+                                        department: companies[index].department[0],
                                         companyEmail: companies[index].email,
                                         studentSapid: widget.studentSapid,
                                       )));
                         },
                         child: CompanyCard(
                           title: companies[index].nameCompany,
-                          description: companies[index].department,
+                          description: 'THis is a company',
                         ),
                       );
                     },

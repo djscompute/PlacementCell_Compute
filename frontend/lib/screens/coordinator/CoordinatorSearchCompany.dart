@@ -140,7 +140,7 @@ class _Search_EditCompanyState extends State<Search_EditCompany> {
                         },
                         child: CompanyCard(
                           title: companies[index].nameCompany,
-                          description: companies[index].department,
+                          description: 'This is a company',
                         ),
                       );
                     },
