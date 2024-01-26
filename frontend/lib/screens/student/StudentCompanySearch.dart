@@ -132,7 +132,7 @@ class _SearchCompaniesState extends State<SearchCompanies> {
                                   builder: (context) => ApplyCompany(
                                         nameCompany:
                                             companies[index].nameCompany,
-                                        department: companies[index].department[0],
+                                        department: companies[index].department,
                                         companyEmail: companies[index].email,
                                         studentSapid: widget.studentSapid,
                                       )));
