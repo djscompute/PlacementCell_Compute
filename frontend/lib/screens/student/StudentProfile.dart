@@ -1,16 +1,31 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:placement_cell/screens/optionscreen.dart';
-
+import 'package:http/http.dart' as http;
 
 class ProfileStudent extends StatefulWidget {
-  const ProfileStudent({super.key});
+  final int sapid;
+  const ProfileStudent({required this.sapid});
 
   @override
   State<ProfileStudent> createState() => _ProfileStudentState();
 }
 
 class _ProfileStudentState extends State<ProfileStudent> {
+  String name = '';
+  String middlename = '';
+  String surname = '';
+  String branch = '';
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    fetchStudentetails(widget.sapid);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,7 +99,7 @@ class _ProfileStudentState extends State<ProfileStudent> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Shivam Nagori",
+                            name + " " + surname,
                             style: GoogleFonts.montserrat(
                               fontSize: 22,
                               fontWeight: FontWeight.bold,
@@ -99,7 +114,7 @@ class _ProfileStudentState extends State<ProfileStudent> {
                             ),
                           ),
                           Text(
-                            "CSE(DS) STUDENT",
+                            branch + " student",
                             style: GoogleFonts.montserrat(
                               fontSize: 15,
                               color: const Color.fromRGBO(1, 1, 24, 10),
@@ -123,10 +138,12 @@ class _ProfileStudentState extends State<ProfileStudent> {
             top: 250,
             child: ListView(
               padding: const EdgeInsets.all(0),
-              children: const [
-                ProfileBoxes(name: "Full Name", value: "Shivam Sanjay Nagori"),
-                ProfileBoxes(name: "SAP ID", value: "60009210083"),
-                ProfileBoxes(name: "Branch", value: "CSE (DS)"),
+              children: [
+                ProfileBoxes(
+                    name: "Full Name",
+                    value: (name + " " + middlename + " " + surname)),
+                ProfileBoxes(name: "SAP ID", value: widget.sapid.toString()),
+                ProfileBoxes(name: "Branch", value: branch),
                 ProfileBoxes(name: "CGPA", value: "8.8"),
                 ProfileBoxes(name: "placed", value: "Not Yet"),
               ],
@@ -137,6 +154,37 @@ class _ProfileStudentState extends State<ProfileStudent> {
         ],
       ),
     );
+  }
+
+  Future<void> fetchStudentetails(int sapid) async {
+    final url = 'http://192.168.193.65:3000/student/studentDetails';
+
+    final Map<String, dynamic> data = {
+      "studentSapid": sapid,
+    };
+
+    final response = await http.post(
+      Uri.parse(url),
+      body: jsonEncode(data),
+      headers: {'Content-Type': 'application/json'},
+    );
+
+    if (response.statusCode == 200) {
+      final Map<String, dynamic> responseBody = jsonDecode(response.body);
+      if (responseBody['status'] == true) {
+        setState(() {
+          name = (responseBody["student"]["name"]);
+          middlename = (responseBody["student"]["middlename"]);
+          surname = (responseBody["student"]["surname"]);
+          branch = (responseBody["student"]["department"]);
+        });
+      } else {
+        print("Error: ${responseBody['message']}");
+      }
+    } else {
+      print('Error: ${response.statusCode}');
+      print('Body: ${response.body}');
+    }
   }
 }
 
@@ -211,8 +259,8 @@ class LogoutButton extends StatelessWidget {
         ),
       ),
       onPressed: () {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => const OptionScreen()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const OptionScreen()));
       },
       child: Text(
         "LOG OUT",
@@ -222,5 +270,3 @@ class LogoutButton extends StatelessWidget {
     );
   }
 }
-
-

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:placement_cell/screens/coordinator/CoordinatorSelectedStudents.dart';
 import 'package:placement_cell/screens/coordinator/CoordinatorStudentsApplied.dart';
 
 class EditCompany extends StatefulWidget {
@@ -182,29 +183,39 @@ class _EditCompanyState extends State<EditCompany> {
                     SizedBox(
                       height: 20,
                     ),
-                    Container(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                      decoration: BoxDecoration(
-                          color: Colors.grey.shade800.withOpacity(0.4),
-                          borderRadius: BorderRadius.circular(12)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Edit Students Selected",
-                            style: GoogleFonts.montserrat(
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white,
-                                fontSize: 15),
-                          ),
-                          Icon(
-                            Icons.arrow_forward_ios_rounded,
-                            color: Colors.white,
-                            size: 20,
-                          )
-                        ],
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SelectedStudents(
+                                      studentsApplied: widget.studentsApplied,
+                                    )));
+                      },
+                      child: Container(
+                        padding:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                        decoration: BoxDecoration(
+                            color: Colors.grey.shade800.withOpacity(0.4),
+                            borderRadius: BorderRadius.circular(12)),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Edit Students Selected",
+                              style: GoogleFonts.montserrat(
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white,
+                                  fontSize: 15),
+                            ),
+                            Icon(
+                              Icons.arrow_forward_ios_rounded,
+                              color: Colors.white,
+                              size: 20,
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ],

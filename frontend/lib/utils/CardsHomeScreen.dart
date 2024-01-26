@@ -30,7 +30,7 @@ class _CardDescriptionState extends State<CardDescription> {
       PdfUploadScreen(),
       SearchCompanies(studentSapid: widget.studentSapid),
        AppliedCompanies( Sapid: widget.studentSapid),
-      const ProfileStudent()
+      ProfileStudent(sapid: widget.studentSapid,)
     ];
 
     return GestureDetector(
