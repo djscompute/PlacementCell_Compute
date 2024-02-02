@@ -5,7 +5,12 @@ class ApplicationService {
   static async createApplication(data, resumeFile) {
     try {
       const { companyId, companyName, studentSapid, nameStudent, middlenameStudent, surnameStudent, studentBranch, studentGpa, student10th, student12th } = data;
-
+  
+      // Check if resumeFile is provided and has buffer and mimetype properties
+      // if (!resumeFile || !resumeFile.buffer || !resumeFile.mimetype) {
+      //   throw new Error('Invalid or missing resume file');
+      // }
+  
       const newApplication = new ApplicationModel({
         companyId,
         companyName,
@@ -18,16 +23,17 @@ class ApplicationService {
         student10th,
         student12th,
         studentResume: {
-          data: resumeFile.buffer, // assuming 'resumeFile' is a multer file object
+          data: resumeFile.buffer,
           contentType: resumeFile.mimetype,
         },
       });
-
+  
       return await newApplication.save();
     } catch (err) {
       throw err;
     }
   }
+  
 
   static async getApplications() {
     try {

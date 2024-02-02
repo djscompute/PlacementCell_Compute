@@ -25,7 +25,7 @@ const applicationSchema = new Schema({
         required: true,
     },
 
-    middlnameStudent : {
+    middlenameStudent : {
         type: String,
         required : true,
     },

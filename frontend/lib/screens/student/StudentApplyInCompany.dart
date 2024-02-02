@@ -1,10 +1,13 @@
 import 'dart:convert';
+import 'dart:io';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:lottie/lottie.dart';
 
 class ApplyCompany extends StatefulWidget {
+  final String companyId;
   final String nameCompany;
   final String department;
   final String companyEmail;
@@ -15,6 +18,7 @@ class ApplyCompany extends StatefulWidget {
     required this.department,
     required this.companyEmail,
     required this.studentSapid,
+    required this.companyId,
   });
 
   @override
@@ -23,6 +27,21 @@ class ApplyCompany extends StatefulWidget {
 
 class _ApplyCompanyState extends State<ApplyCompany> {
   TextEditingController _resumeController = new TextEditingController();
+
+  late String _filePath;
+
+  Future<void> _pickFile() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles();
+
+    if (result != null && result.files.isNotEmpty) {
+      setState(() {
+        _filePath = result.files.single.path ?? '';
+        _resumeController.text = _filePath;
+      });
+    }
+
+    print(result);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +54,7 @@ class _ApplyCompanyState extends State<ApplyCompany> {
             right: 20,
             child: GestureDetector(
               onTap: () {
-                addStudentToCompany();
+                createApplication(File(_filePath));
               },
               child: Container(
                 height: 75,
@@ -154,29 +173,11 @@ class _ApplyCompanyState extends State<ApplyCompany> {
             bottom: 120,
             left: 20,
             right: 20,
-            child: TextField(
-              controller: _resumeController,
-              style: GoogleFonts.montserrat(color: Colors.lightBlueAccent),
-              decoration: InputDecoration(
-                labelText: "Resume Drive Link",
-                labelStyle:
-                    GoogleFonts.montserrat(color: Colors.lightBlueAccent),
-                enabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                      color: Colors.lightBlueAccent,
-                      width: 2.0,
-                    ),
-                    borderRadius: BorderRadius.circular(20)),
-                focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                      color: Colors
-                          .lightBlueAccent, // Border color when not selected
-                      width: 2.0,
-                    ),
-                    borderRadius: BorderRadius.circular(20)),
-              ),
+            child: ElevatedButton(
+              onPressed: _pickFile,
+              child: Text("Upload PDF"),
             ),
-          )
+          ),
         ],
       ),
     );
@@ -207,6 +208,54 @@ class _ApplyCompanyState extends State<ApplyCompany> {
     } else {
       print('Error: ${response.statusCode}');
       print('Body: ${response.body}');
+    }
+  }
+
+  Future<void> createApplication(File resumeFile) async {
+    final String apiUrl =
+        'http://192.168.242.65:3000/application/createApplication'; // Replace with your actual API endpoint
+
+    try {
+      var request = http.MultipartRequest('POST', Uri.parse(apiUrl));
+
+      request.fields.addAll({
+        'companyId': widget.companyId,
+        'companyName': widget.nameCompany,
+        'studentSapid': widget.studentSapid.toString(),
+        'nameStudent': 'SHIVAM',
+        'middlenameStudent': 'SANJAY',
+        'surnameStudent': 'NAGORI',
+        'studentBranch': 'CSE',
+        'studentGpa': '9',
+        'student10th': '90',
+        'student12th': '90',
+      });
+
+      if (resumeFile != null) {
+        // Add the resume file
+        request.files.add(
+          await http.MultipartFile.fromBytes(
+            'resume',
+            resumeFile.readAsBytesSync(),
+            filename: '${widget.studentSapid}_resume.pdf', // Provide a filename
+          ),
+        );
+      }
+
+      var response = await request.send();
+
+      if (response.statusCode == 200) {
+        // Handle successful response, if needed
+        print('Application created successfully');
+        addStudentToCompany();
+      } else {
+        // Handle error response
+        print(
+            'Failed to create application. Status code: ${response.statusCode}');
+      }
+    } catch (error) {
+      print('Error creating application: $error');
+      // Handle other errors
     }
   }
 

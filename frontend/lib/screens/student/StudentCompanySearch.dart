@@ -130,6 +130,7 @@ class _SearchCompaniesState extends State<SearchCompanies> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) => ApplyCompany(
+                                      companyId: companies[index].companyId,
                                         nameCompany:
                                             companies[index].nameCompany,
                                         department:
