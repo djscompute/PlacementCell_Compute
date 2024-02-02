@@ -1,6 +1,4 @@
 const studentModel = require('../models/student_model');
-const CompanyModel = require('../models/company_model');
-const jwt = require('jsonwebtoken');
 const multer = require('multer');
 const PdfModel = require('../models/pdf_model');
 class studentService{

@@ -113,19 +113,6 @@ class companyService{
             throw error;
         }
     }
-    
-    // static async findAllAppliedStudents(sapids) {
-    //     try {
-    //         const students = await studentModel.find({sapid : { $in : sapids}});
-    //         return students;
-    //     } catch (error) {
-    //         throw error; 
-    //     }
-    // }
-
-
-    
-    
 }
 
 
