@@ -39,7 +39,7 @@ class _PdfUploadScreenState extends State<PdfUploadScreen> {
     try {
       var request = http.MultipartRequest(
         'POST',
-        Uri.parse('http://192.168.193.65:3000/student/uploadpdf'),
+        Uri.parse('http://192.168.242.65:3000/student/uploadpdf'),
       );
 
       request.files.add(

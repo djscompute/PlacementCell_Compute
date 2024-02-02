@@ -1,7 +1,7 @@
 class Company {
   final String email;
   final String nameCompany;
-  final String department;
+  final List<String> department;
   final List<int> studentsApplied;
   final List<int> studentsSelected;
 
@@ -18,7 +18,7 @@ class Company {
     return Company(
       email: json['email'],
       nameCompany: json['name'],
-      department: json['department'],
+      department: List<String>.from(json['department']),
       studentsApplied: List<int>.from(json['studentsApplied']),
       studentsSelected: List<int>.from(json['studentsSelected']),
     );

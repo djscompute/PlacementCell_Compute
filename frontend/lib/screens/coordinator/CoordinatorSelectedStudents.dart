@@ -144,7 +144,7 @@ class _SelectedStudentsState extends State<SelectedStudents> {
   Future<List<User>> getAllstudents(List<int> appliedStudents) async {
     print(appliedStudents);
     var response = await http.get(
-      Uri.parse("http://192.168.193.65:3000/student/allstudents"),
+      Uri.parse("http://192.168.242.65:3000/student/allstudents"),
       headers: {"Content-Type": "application/json"},
     );
     var jsonResponse = jsonDecode(response.body);

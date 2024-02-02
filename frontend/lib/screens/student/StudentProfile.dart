@@ -157,7 +157,7 @@ class _ProfileStudentState extends State<ProfileStudent> {
   }
 
   Future<void> fetchStudentetails(int sapid) async {
-    final url = 'http://192.168.193.65:3000/student/studentDetails';
+    final url = 'http://192.168.242.65:3000/student/studentDetails';
 
     final Map<String, dynamic> data = {
       "studentSapid": sapid,

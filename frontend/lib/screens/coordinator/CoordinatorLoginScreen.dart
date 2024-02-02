@@ -178,7 +178,7 @@ class loginbtn extends StatelessWidget {
               //   // };
 
               //   // var response = await http.post(
-              //   //   Uri.parse("http://192.168.193.65:3000/student/login"),
+              //   //   Uri.parse("http://192.168.242.65:3000/student/login"),
               //   //   headers: {"Content-Type": "application/json"},
               //   //   body: jsonEncode(regBody),
               //   // );

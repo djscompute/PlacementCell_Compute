@@ -184,7 +184,7 @@ class _ApplyCompanyState extends State<ApplyCompany> {
 
   // api function starts here
   Future<void> addStudentToCompany() async {
-    final url = 'http://192.168.193.65:3000/company/applyCompany';
+    final url = 'http://192.168.242.65:3000/application/createApplication';
 
     final Map<String, dynamic> data = {
       "companyEmail": widget.companyEmail,

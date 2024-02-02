@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:placement_cell/screens/coordinator/CoordinatorHomeScreen.dart';
 import 'package:placement_cell/utils/CompanyTextFields.dart';
-import 'package:placement_cell/utils/CardsBranch.dart';
 import 'package:http/http.dart' as http;
 
 class AddCompany extends StatefulWidget {
@@ -192,8 +191,8 @@ class _AddCompanyState extends State<AddCompany> {
                   ),
                 ),
                 onPressed: () {
-                  addCompany(_companyEmail.text, _companyname.text,
-                      selectedBranches[0]);
+                  addCompany(
+                      _companyEmail.text, _companyname.text, selectedBranches);
                 },
                 child: Text(
                   'Add Company',
@@ -211,8 +210,8 @@ class _AddCompanyState extends State<AddCompany> {
   }
 
   Future<void> addCompany(email, name, department) async {
-    const url = 'http://192.168.193.65:3000/company/registration';
-
+    const url = 'http://192.168.242.65:3000/company/registration';
+    print("function called");
     Map<String, dynamic> data = {
       "email": email,
       "name": name,
@@ -220,6 +219,7 @@ class _AddCompanyState extends State<AddCompany> {
     };
 
     try {
+      print("trying");
       final http.Response response = await http.post(
         Uri.parse(url),
         headers: <String, String>{

@@ -168,7 +168,7 @@ class _SearchStudentsState extends State<SearchStudents> {
 
   Future<List<User>> getAllstudents() async {
     var response = await http.get(
-      Uri.parse("http://192.168.193.65:3000/student/allstudents"),
+      Uri.parse("http://192.168.242.65:3000/student/allstudents"),
       headers: {"Content-Type": "application/json"},
     );
     var jsonResponse = jsonDecode(response.body);

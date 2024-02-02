@@ -130,7 +130,8 @@ class _Search_EditCompanyState extends State<Search_EditCompany> {
                                   builder: (context) => EditCompany(
                                         nameCompany:
                                             companies[index].nameCompany,
-                                        department: companies[index].department,
+                                        department:
+                                            companies[index].department[0],
                                         companyEmail: companies[index].email,
                                         studentsApplied:
                                             companies[index].studentsApplied,
@@ -156,7 +157,7 @@ class _Search_EditCompanyState extends State<Search_EditCompany> {
 
   Future<List<Company>> fetchAllCompanies() async {
     var response = await http.get(
-      Uri.parse("http://192.168.193.65:3000/company/findallCompanies"),
+      Uri.parse("http://192.168.242.65:3000/company/findallCompanies"),
       headers: {"Content-Type": "application/json"},
     );
 

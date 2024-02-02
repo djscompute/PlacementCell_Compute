@@ -128,7 +128,7 @@ class _AppliedCompanyStatusState extends State<AppliedCompanyStatus> {
                           .contains(widget.Sapid);
                       return CardStatus(
                         title: companies[index].nameCompany,
-                        description: companies[index].department,
+                        description: companies[index].department[0],
                         status: stats,
                       );
                     },
@@ -146,7 +146,7 @@ class _AppliedCompanyStatusState extends State<AppliedCompanyStatus> {
     final Map<String, dynamic> reqBody = {"studentSapid": widget.Sapid};
 
     var response = await http.post(
-      Uri.parse("http://192.168.193.65:3000/company/findstudents"),
+      Uri.parse("http://192.168.242.65:3000/company/findstudents"),
       headers: {"Content-Type": "application/json"},
       body: jsonEncode(reqBody),
     );

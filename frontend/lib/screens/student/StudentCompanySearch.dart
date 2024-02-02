@@ -132,7 +132,8 @@ class _SearchCompaniesState extends State<SearchCompanies> {
                                   builder: (context) => ApplyCompany(
                                         nameCompany:
                                             companies[index].nameCompany,
-                                        department: companies[index].department,
+                                        department:
+                                            companies[index].department[0],
                                         companyEmail: companies[index].email,
                                         studentSapid: widget.studentSapid,
                                       )));
@@ -155,7 +156,7 @@ class _SearchCompaniesState extends State<SearchCompanies> {
 
   Future<List<Company>> fetchAllCompanies() async {
     var response = await http.get(
-      Uri.parse("http://192.168.193.65:3000/company/findallCompanies"),
+      Uri.parse("http://192.168.242.65:3000/company/findallCompanies"),
       headers: {"Content-Type": "application/json"},
     );
 

@@ -115,7 +115,7 @@ class _AppliedCompaniesState extends State<AppliedCompanies> {
                     itemBuilder: (context, index) {
                       return CompanyCard(
                         title: companies[index].nameCompany,
-                        description: companies[index].department,
+                        description: companies[index].department[0],
                       );
                     },
                   );
@@ -132,7 +132,7 @@ class _AppliedCompaniesState extends State<AppliedCompanies> {
     final Map<String, dynamic> reqBody = {"studentSapid": widget.Sapid};
 
     var response = await http.post(
-      Uri.parse("http://192.168.193.65:3000/company/findstudents"),
+      Uri.parse("http://192.168.242.65:3000/company/findstudents"),
       headers: {"Content-Type": "application/json"},
       body: jsonEncode(reqBody),
     );

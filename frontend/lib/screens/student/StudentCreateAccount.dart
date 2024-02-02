@@ -180,7 +180,7 @@ class _CreateStudentAccountState extends State<CreateStudentAccount> {
     };
 
     return await http.post(
-      Uri.parse("http://192.168.193.65:3000/student/registration"),
+      Uri.parse("http://192.168.242.65:3000/student/registration"),
       headers: {"Content-Type": "application/json"},
       body: jsonEncode(regBody),
     );
