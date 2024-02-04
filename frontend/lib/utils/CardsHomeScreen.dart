@@ -5,6 +5,8 @@ import 'package:placement_cell/screens/student/StudentCompanySearch.dart';
 import 'package:placement_cell/screens/student/StudentAppliedCompany.dart';
 import 'package:placement_cell/screens/student/testinguploadddocs.dart';
 
+import '../screens/student/StudentUploadDocs.dart';
+
 class CardDescription extends StatefulWidget {
   final String title;
   final Icon icon;
@@ -27,7 +29,7 @@ class _CardDescriptionState extends State<CardDescription> {
   @override
   Widget build(BuildContext context) {
     final screens = [
-      PdfUploadScreen(),
+      UploadDocs(),
       SearchCompanies(studentSapid: widget.studentSapid),
        AppliedCompanies( Sapid: widget.studentSapid),
       ProfileStudent(sapid: widget.studentSapid,)

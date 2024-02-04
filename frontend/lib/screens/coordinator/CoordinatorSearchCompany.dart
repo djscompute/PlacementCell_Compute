@@ -131,7 +131,7 @@ class _Search_EditCompanyState extends State<Search_EditCompany> {
                                         nameCompany:
                                             companies[index].nameCompany,
                                         department:
-                                            companies[index].department[0],
+                                            companies[index].department,
                                         companyEmail: companies[index].email,
                                         studentsApplied:
                                             companies[index].studentsApplied,

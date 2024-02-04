@@ -6,7 +6,7 @@ import 'package:placement_cell/screens/coordinator/CoordinatorStudentsApplied.da
 class EditCompany extends StatefulWidget {
   final String companyEmail;
   final String nameCompany;
-  final String department;
+  final List<String> department;
   final List<int> studentsApplied;
   final List<int> studentsSelected;
   EditCompany(
@@ -101,45 +101,62 @@ class _EditCompanyState extends State<EditCompany> {
               left: 20,
               right: 20,
               bottom: 300,
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.grey.shade800.withOpacity(0.4),
-                ),
-                child: Center(
-                    child: Text(
-                  "here description about the company",
-                  style: GoogleFonts.montserrat(
-                      color: Colors.lightBlueAccent,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w300),
-                )),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Container(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.grey.shade800.withOpacity(0.4),
+                      ),
+                      child: Center(
+                          child: Text(
+                        "here description about the company",
+                        style: GoogleFonts.montserrat(
+                            color: Colors.lightBlueAccent,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w300),
+                      )),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Wrap(
+                    spacing: 5.0,
+                    runSpacing: 8.0,
+                    children: widget.department.map((branch) {
+                      return Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.lightBlueAccent,
+                          ),
+                          color: Colors.black,
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        padding: const EdgeInsets.all(8.0),
+                        margin: EdgeInsets.symmetric(horizontal: 5),
+                        child: Text(
+                          branch,
+                          style: GoogleFonts.montserrat(
+                            color: Colors.lightBlueAccent,
+                          ),
+                        ),
+                      );
+                    }).toList(),
+                  ),
+                ],
               ),
             ),
 
             // branches allowed
-            Positioned(
-              bottom: 250,
-              left: 20,
-              child: Container(
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.lightBlueAccent,
-                  ),
-                  borderRadius: BorderRadius.circular(8.0),
-                ),
-                padding: const EdgeInsets.all(8.0),
-                margin: EdgeInsets.symmetric(horizontal: 5),
-                child: Text(
-                  widget.department,
-                  style: GoogleFonts.montserrat(color: Colors.lightBlueAccent),
-                ),
-              ),
-            ),
 
             Positioned(
-                bottom: 100,
+                bottom: 130,
                 left: 20,
                 right: 20,
                 child: Column(

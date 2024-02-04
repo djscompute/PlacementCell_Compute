@@ -62,7 +62,7 @@ class _CoordinatorHomeScreenState extends State<CoordinatorHomeScreen> {
                             ),
                             child: Center(
                                 child: Text(
-                              "SN",
+                              "EL",
                               style: GoogleFonts.montserrat(
                                   color: Colors.lightBlueAccent,
                                   fontSize: 16,
@@ -105,7 +105,7 @@ class _CoordinatorHomeScreenState extends State<CoordinatorHomeScreen> {
                           Text(
                             "Placement coordinator of CSE(DS)",
                             style: GoogleFonts.montserrat(
-                              fontSize: 18,
+                              fontSize: 16,
                               color: const Color.fromRGBO(1, 1, 24, 10),
                             ),
                           ),

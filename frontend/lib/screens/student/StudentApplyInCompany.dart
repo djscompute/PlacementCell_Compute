@@ -54,7 +54,7 @@ class _ApplyCompanyState extends State<ApplyCompany> {
             right: 20,
             child: GestureDetector(
               onTap: () {
-                createApplication(File(_filePath));
+                addStudentToCompany();
               },
               child: Container(
                 height: 75,
@@ -185,7 +185,7 @@ class _ApplyCompanyState extends State<ApplyCompany> {
 
   // api function starts here
   Future<void> addStudentToCompany() async {
-    final url = 'http://192.168.242.65:3000/application/createApplication';
+    final url = 'http://192.168.242.65:3000/company/applyCompany';
 
     final Map<String, dynamic> data = {
       "companyEmail": widget.companyEmail,
@@ -247,7 +247,6 @@ class _ApplyCompanyState extends State<ApplyCompany> {
       if (response.statusCode == 200) {
         // Handle successful response, if needed
         print('Application created successfully');
-        addStudentToCompany();
       } else {
         // Handle error response
         print(

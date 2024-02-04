@@ -76,8 +76,8 @@ class _CreateStudentAccountState extends State<CreateStudentAccount> {
           Positioned(
             top: 100,
             bottom: 0,
-            left: 0,
-            right: 0,
+            left: 20,
+            right: 20,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
